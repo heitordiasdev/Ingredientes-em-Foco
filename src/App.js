@@ -7,6 +7,8 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import { Home } from './pages'
 
+/* Teste */
+
 export default function App() {
   return (
     <Router>
