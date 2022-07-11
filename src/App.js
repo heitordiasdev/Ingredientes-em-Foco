@@ -6,7 +6,7 @@ import {
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import { Home } from './pages'
-
+import Register from "./pages/Register" 
 /* Teste */
 
 export default function App() {
@@ -14,7 +14,7 @@ export default function App() {
     <Router>
       <Navbar/>
       <Routes>
-      <Route path="/" element={<Home />}/>
+      <Route path="/" element={<Register />}/>
       </Routes> 
       <Footer/> 
     </Router>
