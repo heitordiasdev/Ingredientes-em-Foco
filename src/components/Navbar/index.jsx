@@ -18,7 +18,7 @@ const Icons = styled("Box")(({theme}) => ({
     padding: "0 10px",
 }));
 
-  
+
 const Navbar = () => {
     return (
       <AppBar position="stick">
