@@ -19,7 +19,7 @@ const Icons = styled("Box")(({theme}) => ({
     padding: "0 10px",
 }));
 
-  
+
 const Navbar = () => {
     const[text, setText] = useState('');
     const navigate = useNavigate();
