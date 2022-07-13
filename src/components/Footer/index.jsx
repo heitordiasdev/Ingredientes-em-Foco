@@ -8,10 +8,10 @@ export default function Footer() {
         component="footer"
         sx={{
           position: 'static',
-          height: '8vh',
+          height: '9vh',
           py: 3,
           px: 2,
-          mt: '100vh',
+          mt: '50vh',
           backgroundColor:'#52691F'
         }}
       >
