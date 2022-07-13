@@ -19,11 +19,10 @@ export default function FormRegister() {
     console.log(createUser)
   }
 
-
   return (
     
     <div align='center' >
-      <Card style={{ maxWidth:'450', margin:'0 auto', padding:'20px 5px' ,width: '80%', float: 'right', }} 
+      <Card style={{ maxWidth:'450', margin:'0 auto', padding:'20px 5px' ,width: '80%', float: 'right', background:'transparent' }} 
       variant='elevation' sx={{}}>
         <h1>Cliente</h1>
         <CardContent>
