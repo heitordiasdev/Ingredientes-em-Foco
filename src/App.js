@@ -7,8 +7,8 @@ export default function App() {
   return (
   <>
     <Navbar/>
-    <div sx = {{mt:'50vh'}}>
-    <Router/>
+    <div >
+    <Router/>0
     </div> 
     <Footer/> 
   </>
