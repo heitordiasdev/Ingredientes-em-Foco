@@ -23,12 +23,14 @@ export default function UserAdmin() {
   
     <Box sx={{ display: 'flex', overflow: 'auto', height: '74vh'}}>
         <Box sx={{alignSelf: 'center', p:5}}>
-          <List>
-            <MenuLateral icon={'home'} label={'USUARIOS'} to={'/home-admin/user-admin'}/>
+        <List>
+            <MenuLateral icon={'person'} label={'USUARIOS'} to={'/home-admin/user-admin'}/>
+            <MenuLateral icon={'storefront'} label={'FORNECEDORES'} to={'/home-admin/user-admin'}/>
+            <MenuLateral icon={'restaurantmenu'} label={'PRODUTOS'} to={'/home-admin'}/>
           </List>
         </Box>
       <Box component="main" sx={{ flexGrow: 1, p: 3, backgroundColor:'#0000001C'}}>
-        <Typography sx={{ fontSize: 40,  color: '#E52928', textAlign:'center'}} >GERENCIAR CLIENTES</Typography>
+        <Typography sx={{ fontSize: 40,  color: '#E52928', textAlign:'center', fontWeight:'bolder'}} >GERENCIAR CLIENTES</Typography>
             <Paper className sx={{ borderRadius: '37px', mt:'50px'}}>
                 <Grid container spacing={3}>
                   <Grid item xs={12} sm={12}>
