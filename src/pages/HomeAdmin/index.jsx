@@ -23,7 +23,7 @@ export default function HomeAdmin() {
         <Box sx={{width:'20%', alignSelf: 'center', p:5}}>
           <List>
             <MenuLateral icon={'person'} label={'USUARIOS'} to={'/home-admin/user-admin'}/>
-            <MenuLateral icon={'storefront'} label={'FORNECEDORES'} to={'/home-admin/user-admin'}/>
+            <MenuLateral icon={'storefront'} label={'FORNECEDORES'} to={'/provider'}/>
             <MenuLateral icon={'restaurantmenu'} label={'PRODUTOS'} to={'/home-admin'}/>
           </List>
         </Box>

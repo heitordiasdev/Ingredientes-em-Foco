@@ -5,6 +5,7 @@ import loadFoods from '../../services/provider';
 
 function Provider() {
   const [foods, setFoods] = useState({});
+  const [ loading, setLoading ] = useState(true);
   const { getFoods } = loadFoods();
   
   useEffect(() => {
@@ -12,13 +13,12 @@ function Provider() {
           const getFoodsFromApi = await getFoods();
 
           setFoods(getFoodsFromApi);
-          console.log('ApiFoods', getFoodsFromApi);
-          console.log('Foods', foods);
+          setLoading(false);
         })();
       }, []);
     return (
         <>
-          <ListFoods foods={foods} />
+          <ListFoods foods={foods} loading={loading} />
         </>
     )   
 };
