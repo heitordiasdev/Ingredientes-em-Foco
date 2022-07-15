@@ -8,7 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import PersonIcon from '@mui/icons-material/Person';
 
 const StyledToolbar = styled(Toolbar)({
-    height: "120px",
+    height: "100px",
     backgroundColor:"#E4E4E4",
     display:"flex",
     justifyContent:"space-between"
@@ -23,7 +23,7 @@ const Navbar = () => {
     return (
       <AppBar position="stick">
         <StyledToolbar>
-            <Box component="img" sx={{height:120}} alt="ingredients in foco" src={Logo}/>
+            <Box component="img" sx={{height:100}} alt="ingredients in foco" src={Logo}/>
             <Paper
                 component="form"
                 sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '40%', borderRadius: '37px' }}

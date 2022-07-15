@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react'
+import Header from './../../components/SideMenu/Header'
+import MiddleSection from './../../components/SideMenu/MiddleSection'
 
-
-export default function Home() {
-    return(
-        <div>
-        Hello!!
-      </div>
+export default class App extends Component {
+  render() {
+    return (
+      <>
+       <Header/>
+       <MiddleSection/>
+      </>
     )
+  }
 }
