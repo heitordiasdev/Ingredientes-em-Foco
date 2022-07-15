@@ -1,19 +1,12 @@
-body{
-    background-image: url(/src/assets/background-register.png) ;
+/* body{
+    background-image: url(/src/assets/Register.png) ;
     background-size: 150%
      
-}
+} */
 
-.div{
+/* .div{
     
-    /* margin-top: 8%;
+    /* /* margin-top: 8%;
     margin-right: 10%;
     width: 50%;
     float: right */
-    
-}
-
-.div input{
-    
-    margin: 5px;
-}
