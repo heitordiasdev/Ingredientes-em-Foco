@@ -1,17 +1,15 @@
-import "./App.css";
-import { Router } from "./router";
-
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
-import ViewUser from "./components/ViewUser";
+import { Router } from "./router";
 
 export default function App() {
+
   return (
-    <>
-      <Navbar />
-      <ViewUser />
-      <Router />
-      <Footer />
-    </>
+  <>
+    <Navbar/>
+    <Router/>
+    <Footer/> 
+  </>
   );
+
 }
