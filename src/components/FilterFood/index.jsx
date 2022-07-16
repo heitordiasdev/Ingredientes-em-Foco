@@ -3,7 +3,7 @@ import { Stack, Typography, InputBase, IconButton, Box, FormControl, InputLabel,
 import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
 
-export default function FilterFood({food}){
+export default function FilterFood({to1 ,to2 , to3}){
     const[text, setText] = useState('');
     const navigate = useNavigate();
     const [age, setAge] = React.useState('30');
@@ -12,16 +12,16 @@ export default function FilterFood({food}){
     const handleClick = () => {
         if(age === 10){
             if(text!== ''){
-                navigate(`food-filter-ingredient/${text}`)
+                navigate(`${to1}/${text}`)
             }   
         }
         else if(age === 20){
             if(text!== ''){
-                navigate(`food-filter-no-ingredient/${text}`)
+                navigate(`${to2}/${text}`)
             }
         }
         else { 
-            navigate(`food-filter`)
+            navigate(to3)
         }
     };
 
