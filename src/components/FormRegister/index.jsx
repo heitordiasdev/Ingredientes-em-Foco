@@ -19,6 +19,7 @@ export default function FormRegister() {
   const [alert, setAlert] = useState(false);
   const [name, setName] = useState();
   const [password, setPassword] = useState();
+  const [passwordConfirm, setPasswordConfirm] = useState();
   const [cpfCnpj, setCpfCnpj] = useState();
   const [email, setEmail] = useState();
   const [dateNasc, setDateNasc] = useState();
@@ -70,11 +71,12 @@ export default function FormRegister() {
                 <TextField sx={{ backgroundColor: 'white' }} label='CPF' required placeholder='Digite seu CPF' variant='outlined' fullWidth onChange={(event) => setCpfCnpj(event.target.value)} />
               </Grid>
               <Grid xs={12} sm={6} item>
-                <TextField sx={{ backgroundColor: 'white' }} type='password' label='Senha' required placeholder='Digite sua Senha' variant='outlined' fullWidth />
+                <TextField sx={{ backgroundColor: 'white' }} type='password' label='Senha' required placeholder='Digite sua Senha' variant='outlined' fullWidth 
+                onChange={(event) => setPassword(event.target.value)} />
 
               </Grid>
               <Grid xs={12} sm={6} item>
-                <TextField sx={{ backgroundColor: 'white' }} type='password' label='Confirmar Senha' required placeholder='Digite sua senha novamente' variant='outlined' fullWidth onChange={(event) => setPassword(event.target.value)} />
+                <TextField sx={{ backgroundColor: 'white' }} type='password' label='Confirmar Senha' required placeholder='Digite sua senha novamente' variant='outlined' fullWidth onChange={(event) => setPasswordConfirm(event.target.value)} />
               </Grid>
 
               <Grid>
@@ -82,9 +84,24 @@ export default function FormRegister() {
                   * Campos Obrigatórios
                 </Typography>
               </Grid>
+              {password === passwordConfirm &&( 
               <Grid xs={12} item>
                 <Button size='large' onClick={userSubmit} type='submit' variant='contained' color='success'> Cadastrar </Button>
               </Grid>
+              )}
+              {password !== passwordConfirm &&(
+                <>
+                <Grid>
+                <Typography variant='h7' sx={{ padding: '-2px', float: 'left', color: 'red', marginRight: '280px', marginLeft: '10px' }}>
+                  As senhas não conferem!
+                </Typography>
+              </Grid>
+                <Grid xs={12} item>
+                <Button size='large' variant='contained' color='error'> Cadastrar </Button>
+              </Grid>
+              </>
+              )}
+                
             </Grid>
           </form>
         </CardContent>
