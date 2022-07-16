@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, ImageList, Card, CardActionArea, CardContent, CardMedia, Button, Stack } from '@mui/material';
 import { foodAll } from '../../services/foodService';
-import { borderBottom } from '@mui/system';
+// import { borderBottom } from '@mui/system';
 
 
 export default function HomeUser() {
@@ -47,13 +47,15 @@ export default function HomeUser() {
             p: 3,
             marginBottom: '30px'
           }}>
-
-          <ImageList cols={4}>
+          <ImageList cols={4} sx={{
+            maxWidth: '1200px',
+            p: 1,
+          }}>
             {food.map((item) => (
 
               <Card sx={{
-                maxWidth: 345,
-                // margin: '20px'
+                maxWidth: 280,
+                marginTop: '30px',
               }}>
                 <CardActionArea>
                   <CardMedia
