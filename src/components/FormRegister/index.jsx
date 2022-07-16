@@ -84,7 +84,6 @@ export default function FormRegister() {
               </Grid>
               <Grid xs={12} item>
                 <Button size='large' onClick={userSubmit} type='submit' variant='contained' color='success'> Cadastrar </Button>
-
               </Grid>
             </Grid>
           </form>
