@@ -11,6 +11,7 @@ export default class Header extends Component {
                 <ListItem style={{width: 'auto', marginRight: 40}}><Link  to="sobre" spy={true} smooth={true}>QUEM SOMOS</Link></ListItem>
                 <ListItem style={{width: 'auto', marginRight: 40}}><Link  to="alergia" spy={true} smooth={true}>ALERGIA ALIMENTAR</Link></ListItem>
                 <ListItem style={{width: 'auto', marginRight: 40}}><Link  to="principais" spy={true} smooth={true}>PRINCIPAIS ALÉRGENOS</Link></ListItem>
+                <ListItem style={{width: 'auto', marginRight: 40}}><Link  to="produtos" spy={true} smooth={true}>PRODUTOS</Link></ListItem>
             </List>
         )
     }
