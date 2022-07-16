@@ -82,11 +82,10 @@ export default function HomeUser() {
 
         </Box>
 
-
       </Box>
       <Box
         sx={{
-          backgroundColor: '##F5F5F5',
+          backgroundColor: '#F5F5F5',
           display: 'flex',
           height: '50vh',
           overflow: 'auto'
