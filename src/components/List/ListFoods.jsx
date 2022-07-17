@@ -3,17 +3,28 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import Dialog from '@mui/material/Dialog';
 import DialogContentText from '@mui/material/DialogContentText';
+import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import { Box, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, List, LinearProgress, Typography, Button } from '@mui/material';
 import MenuLateral from '../MenuLateral';
 import FormNewProd from '../Forms/addFoods';
+import FormEditProd from '../Forms/editFoods';
 import { useState } from 'react';
 
 const ListFoods = ({ foods, loading }) => {
   const [open, setOpen] = useState(false);
+  const [openEdit, setOpenEdit] = useState(false);
+  const [editedItem, setEditedItem] = useState({});
   const [msg, setMessage] = useState('');
 
   const handleClickOpen = () => {
     setOpen(true);
+  };
+  const editProdOpen = async (item) => {
+    // console.log('Pra editar item',item)
+    const info = item.infoNutritional.length>0?JSON.parse(item.infoNutritional):[]
+    setEditedItem({id:item.id, name:item.name, manufacturer:item.manufacturer, ingredients:item.ingredients, infoNutritional:info })
+    // console.log('Pra editar',editedItem)
+    setOpenEdit(true);
   };
   const handleClose = () => {
     setOpen(false);
@@ -45,6 +56,7 @@ const ListFoods = ({ foods, loading }) => {
                   ):(<></>)}
                 </Grid>
               <FormNewProd open={open} setOpen={setOpen} message={showMessage}/>
+              <FormEditProd open={openEdit} setOpen={setOpenEdit} message={showMessage} item={editedItem}/>
                 {loading?(<LinearProgress style={{width:'50%', margin:'20px auto'}}  />):(
                 <Table className aria-label="simple table">
                   <TableHead>
@@ -52,6 +64,7 @@ const ListFoods = ({ foods, loading }) => {
                       <TableCell align="center">ID</TableCell>
                       <TableCell align="center">NOME</TableCell>
                       <TableCell align="center">INGREDIENTES</TableCell>
+                      <TableCell align="center">AÇÕES</TableCell>
                     </TableRow>
                   </TableHead>
                   {foods.data ?
@@ -61,6 +74,8 @@ const ListFoods = ({ foods, loading }) => {
                           <TableCell align="center">{row.id}</TableCell>
                           <TableCell component="th"  align="center" scope="row">{row.name}</TableCell>
                           <TableCell component="th"  align="center" scope="row">{row.ingredients}</TableCell>
+                          <TableCell component="th"  align="center" scope="row"><ModeEditIcon onClick={()=>editProdOpen(row)}></ModeEditIcon>
+                          </TableCell>
                         </TableRow>
                       </TableBody>
                     )

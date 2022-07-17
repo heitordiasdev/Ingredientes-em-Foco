@@ -7,7 +7,6 @@ export default {
         const getFoods = async () => {
             try {
                 const post = await api.get('/food');
-                console.log(post.data)
                 return {data:post.data, message:'Consulta feita com sucesso!'};
             } catch (err) {
                 return {data:false, message:`Houve um problema ao conectar a api.\nErro: ${err}`} 
@@ -25,5 +24,16 @@ export default {
             resp = {data:error.response.data, message:'Ops! Não foi possivel cadastrar o produto', success: false};
         }
         return resp
-    }
+    },
+
+//    async Update (prod, id) {
+        // let resp = {data:'Falha', success:false, message:'Error de resp'}
+        // try {
+        //     const savedFoods = await api.put('/food/'.concat(id), prod);
+        //     resp = {data:savedFoods.data, message:'Produto cadastrado com sucesso!', success: true};
+        // } catch (error) {
+        //     resp = {data:error.response.data, message:'Ops! Não foi possivel cadastrar o produto', success: false};
+        // }
+        // return resp
+    // }
 }
