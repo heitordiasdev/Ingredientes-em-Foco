@@ -14,7 +14,7 @@ export function Router() {
         <Route path="/home-products-no-ingredient/:ingredient" element={<FilterNoIngredient />}/>
 
         <Route path="/filtered-product/:product" element={<FilteredProduct/>}>
-            <Route path="food-filter/:product/:ingredient" element={<FoodFilter/>}/>
+            <Route path="food-filter/:product/" element={<FoodFilter/>}/>
             <Route path="food-filter-ingredient/:ingredient" element={<FoodFilterIngredient />}/>
             <Route path="food-filter-no-ingredient/:ingredient" element={<FoodNoFilterIngredient />}/>
         </Route>

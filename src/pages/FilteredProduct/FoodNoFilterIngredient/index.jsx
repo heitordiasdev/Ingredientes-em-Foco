@@ -5,16 +5,16 @@ import { CardFood } from '../../../components/CardFood';
 import { filterFoodNoIngredient } from '../../../services/foodService';
 
 export default function FoodNoFilterIngredient() {
-  const {product} = useParams();
+  const {product,ingredient} = useParams();
   const [food, setFood] = useState([]);
 
   useEffect(() =>{
     async function loadFood(){
-      const response = await filterFoodNoIngredient(product, 'lactose');
+      const response = await filterFoodNoIngredient(product, ingredient);
       setFood(response)
     }
     loadFood();
-  },[product]);
+  },[product,ingredient]);
 
     return(
       <Box sx={{display: 'flex', overflow: 'auto', backgroundColor:'#0000001C'}}>
