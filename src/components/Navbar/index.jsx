@@ -26,7 +26,7 @@ const Navbar = () => {
 
 
     const handleClick = () => {
-        navigate(`/filtered-product/${text}/food-filter/${text}/${'opaaa'}`)
+        navigate(`/filtered-product/${text}/food-filter/${text}`)
     }
 
     return (
