@@ -10,6 +10,7 @@ export default function App() {
     <Router/>
     <Footer/> 
   </>
+
   );
 
 }

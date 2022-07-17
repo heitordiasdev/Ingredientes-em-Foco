@@ -11,6 +11,7 @@ export default function Footer() {
           height: '9vh',
           py: 3,
           px: 2,
+          mt: 'auto',
           backgroundColor:'#52691F'
         }}
       >
