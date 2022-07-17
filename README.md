@@ -95,7 +95,7 @@ $ http:/localhost:3030
   <tr align="center">
     <td>
       <a href="https://github.com/aucoliveira">
-        <img src="https://avatars.githubusercontent.com/u/aucoliveira" width=100 />
+        <img src="https://avatars.githubusercontent.com/u/21234981?v=4" width=100 />
         <p>Augusto <br/>Cesar</p>
       </a>
     </td>
