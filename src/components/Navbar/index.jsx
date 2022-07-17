@@ -29,6 +29,12 @@ const Navbar = () => {
         navigate(`/filtered-product/${text}/food-filter/${text}`)
     }
 
+    const Click = () => {
+        navigate('register');
+    }
+    const ClickImage = () => {
+        navigate('/');
+    }
     return (
       <AppBar position="sticky">
         <StyledToolbar>
