@@ -92,12 +92,12 @@ $ http:/localhost:3030
       </a>
     </td>
   </tr>
-<!--   <tr align="center">
+  <tr align="center">
     <td>
       <a href="https://github.com/aucoliveira">
         <img src="https://avatars.githubusercontent.com/u/aucoliveira" width=100 />
         <p>Augusto <br/>Cesar</p>
       </a>
     </td>
-  </tr> -->
+  </tr>
 </table>
