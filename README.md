@@ -40,8 +40,11 @@ $ cd Ingredientes-em-Foco
 # Instale todas as dependências:
 $ npm install
 
+# Lembre que antes de dá start no projeto, já tenha iniciado o API
+# onde se encontra no repositório: https://github.com/heitordiasdev/API-Ingredientes-em-Foco
+
 # Caso esteja passando a url Base do axios com o arquivo ".env", verifique se o arquivo ".env" 
-está adequedamente com -> REACT_APP_API="http://localhost:8080".
+# está adequedamente com -> REACT_APP_API="http://localhost:8080".
 
 # Execute o comando abaixo para iniciar o servidor:
 $ npm start
