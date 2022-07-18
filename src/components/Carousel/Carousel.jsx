@@ -7,25 +7,36 @@ import FilterCamarao from './../../assets/FilterCamarao.png'
 import FilterGluten from './../../assets/FilterGluten.png';
 import FilterAmendoim from './../../assets/FilterAmendoim.png';
 import Box from '@mui/material/Box';
+import { useNavigate } from 'react-router-dom';
 
 
 function Carousel(props) {
+    const navigate = useNavigate();
     const [active, setaAtive] = useState(0);
+    const handleClick = (to) =>{
+        navigate('/home-products-no-ingredient/lactose');
+    }
+
     var items = [
         {
-            img: <img src={FilterOvo} alt="ovo"/>
+            img: <img src={FilterOvo} alt="ovo" />,
+            name: 'ovo'
         },
         {
-            img: <img src={FilterLactose} alt="lactose"/>
+            img: <img src={FilterLactose} alt="lactose"/>,
+            name: 'lactose'
         },
         {
-            img: <img src={FilterCamarao} alt="camarao"/>
+            img: <img src={FilterCamarao} alt="camarao"/>,
+            name: 'camarão'
         },
         {
-            img: <img src={FilterGluten} alt="gluten"/>
+            img: <img src={FilterGluten} alt="gluten"/>,
+            name: 'gluten'
         },
         {
-            img: <img src={FilterAmendoim} alt="amendoim"/>
+            img: <img src={FilterAmendoim} alt="amendoim"/>,
+            name:'amendoim'
         }
     ]
 
@@ -58,7 +69,7 @@ function Carousel(props) {
 function Item(props) {
     return (
        
-        <Button className="CheckButton">
+        <Button className="CheckButton" href={`/home-products-no-ingredient/${props.item.name}`}>
             < Paper sx={{display: 'flex', backgroundColor: '#F5F5F5', justifyContent: 'center', width: '250px', height: '70px'}}>
                 {props.item.img}
             </Paper>

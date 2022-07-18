@@ -1,5 +1,5 @@
 import { AppBar, Toolbar, styled, InputBase } from '@mui/material';
-import React from "react";
+import React, { useState } from "react";
 import Box from '@mui/material/Box';
 import Logo from '../../assets/Logo.png'
 import SearchIcon from '@mui/icons-material/Search';
@@ -22,6 +22,7 @@ const Icons = styled("Box")(({theme}) => ({
 
 
 const Navbar = () => {
+    const[text, setText] = useState('');
     const navigate = useNavigate();
 
     const Click = () => {
@@ -30,8 +31,13 @@ const Navbar = () => {
     const ClickImage = () => {
         navigate('/');
     }
+
+    const handleClick = () => {
+        navigate(`/filtered-product/${text}/food-filter/${text}`)
+    }
+
     return (
-      <AppBar position="stick">
+      <AppBar position="sticky">
         <StyledToolbar>
             <Box component="img" sx={{height:100}} alt="ingredients in foco" src={Logo} onClick={ClickImage}/>
             <Paper
@@ -42,8 +48,10 @@ const Navbar = () => {
                     sx={{ ml: 1, flex: 1 }}
                     placeholder=" Pesquise um produto"
                     inputProps={{ 'aria-label': 'pesquise um produto' }}
+                    value={text}
+                    onChange={(event) => setText(event.target.value)}
                 />
-                <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
+                <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={handleClick}>
                 <SearchIcon sx={{color:'#747374'}} />
                 </IconButton>
             </Paper>

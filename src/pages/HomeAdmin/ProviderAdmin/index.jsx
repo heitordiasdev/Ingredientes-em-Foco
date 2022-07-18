@@ -5,7 +5,7 @@ import MenuLateral from '../../../components/MenuLateral';
 
 
 
-export default function UserAdmin() {
+export default function ProviderAdmin() {
     const [usuarios, setUsuarios] = useState([]);
     const [ loading, setLoading ] = useState(true);
 
@@ -43,13 +43,13 @@ export default function UserAdmin() {
                           <TableCell align="center">ID</TableCell>
                           <TableCell align="center">NOME</TableCell>
                           <TableCell align="center">EMAIL</TableCell>
-                          <TableCell align="center">CPF</TableCell>
+                          <TableCell align="center">CNPJ</TableCell>
                           <TableCell align="center">NASCIMENTO</TableCell>
                           <TableCell align="center">STATUS</TableCell>
                         </TableRow>
                       </TableHead>
                       {usuarios.map((row) => (
-                          (row.cpfCnpj).length === 11 ? (
+                          (row.cpfCnpj).length === 14 ? (
                       <>
                       <TableBody sx={{ borderRadius: '37px' }}>
                           <TableRow key={row.id}>
