@@ -121,7 +121,8 @@ $ npm install
 # https://github.com/heitordiasdev/API-Ingredientes-em-Foco
 
 # Caso esteja passando a URL base do axios com o arquivo ".env", verifique se o arquivo
-# ".env" está adequadamente com --> REACT_APP_API="http://localhost:8080".
+# ".env" está contendo este comendo abaixo dentro do arquivo ".env". 
+$ REACT_APP_API="http://localhost:8080".
 
 # Execute o comando abaixo para iniciar o servidor:
 $ npm start
