@@ -16,7 +16,7 @@ export const filterNoIngredient = async (ingredient) => {
 }
 
 export const filterFood = async (ingredient) => {
-  const food = await api.get(`/food/foodFilter/${ingredient}`).then(response =>response.data).catch(err => err);
+  const food = await api.get(`/foodFilter/${ingredient}`).then(response =>response.data).catch(err => err);
   return food;
 }
 
