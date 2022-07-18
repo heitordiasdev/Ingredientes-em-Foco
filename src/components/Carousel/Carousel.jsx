@@ -7,16 +7,11 @@ import FilterCamarao from './../../assets/FilterCamarao.png'
 import FilterGluten from './../../assets/FilterGluten.png';
 import FilterAmendoim from './../../assets/FilterAmendoim.png';
 import Box from '@mui/material/Box';
-import { useNavigate } from 'react-router-dom';
 
 
 function Carousel(props) {
-    const navigate = useNavigate();
     const [active, setaAtive] = useState(0);
-    const handleClick = (to) =>{
-        navigate('/home-products-no-ingredient/lactose');
-    }
-
+   
     var items = [
         {
             img: <img src={FilterOvo} alt="ovo" />,

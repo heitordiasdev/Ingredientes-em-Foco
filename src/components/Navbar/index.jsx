@@ -26,7 +26,7 @@ const Navbar = () => {
     const navigate = useNavigate();
 
     const Click = () => {
-        navigate('register');
+        navigate('/Login');
     }
     const ClickImage = () => {
         navigate('/');
