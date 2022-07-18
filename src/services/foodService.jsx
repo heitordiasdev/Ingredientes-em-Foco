@@ -21,11 +21,11 @@ export const filterFood = async (ingredient) => {
 }
 
 export const filterFoodIngredient = async (product,ingredient) => {
-  const food = await api.get(`/food/foodFilterContainIngredient/${product}/${ingredient}`).then(response =>response.data).catch(err => err);
+  const food = await api.get(`/foodFilterContainIngredient/${product}/${ingredient}`).then(response =>response.data).catch(err => err);
   return food;
 }
 
 export const filterFoodNoIngredient = async (product,ingredient) => {
-  const food = await api.get(`/food/foodFilterNoContainIngredient/${product}/${ingredient}`).then(response =>response.data).catch(err => err);
+  const food = await api.get(`/foodFilterNoContainIngredient/${product}/${ingredient}`).then(response =>response.data).catch(err => err);
   return food;
 }
