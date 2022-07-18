@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import Inicio from './../../assets/Inicio.png';
 import FundoFlorido from './../../assets/FundoFlorido.png';
@@ -13,8 +13,7 @@ import FundoAlergenos from'../../assets/FundoAlergenos.png';
 import Alergenos from '../../assets/Alergenos.png';
 
 
-export default class MiddleSection extends Component {
-    render() {
+export default function MiddleSection() {
         return (
             <>
                 <div id="inicio" style={{height: 500}}>
@@ -78,5 +77,4 @@ export default class MiddleSection extends Component {
             </>
 
         )
-    }
 }

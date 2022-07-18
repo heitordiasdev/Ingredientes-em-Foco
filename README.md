@@ -1,70 +1,189 @@
-# Getting Started with Create React App
+# 🛒 Ingredientes-em-Foco 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> ### 💬 Sobre o projeto
 
-## Available Scripts
+O supermercado SQ encontra dificuldades na gestão de
+seus produtos em relação a: apresentar para os clientes os produtos industrializados e ter a certeza se há
+ou não a presença dos ingredientes em sua composição e desse modo, aumentar a inclusão
+e facilitar a vida de quem tem alergias alimentares, em especial as mais graves.
 
-In the project directory, you can run:
+<br/>
 
-### `npm start`
+> ### 👥 Atores do Sistema
+Atores | Descrição
+:--- | :--- 
+Cliente | <p>O cliente pode visualizar, cadastrar ou editar alimentos na comunidade.</p>
+Administrador |<p>O administrador poderá visualizar e criar postagens na comunidade, além de poder editar ou excluir postagens dos usuários (cliente, fornecedor). O administrador poderá banir usuários que não estejam comprindo com as normais da comunidade.</p>
+Fornecedor |<p>Os fornecedores poderão visualizar, cadastrar e editar alimentos que fornecem.</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<br/>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+> ### 🛠 Funcionalidades
+Funcionalidades | Descrição
+:--- | :---
+RF01 | <p>Possibilidade de cadastrar, visualizar, editar e deletar produtos (utilize banco de dados).</p>
+RF02 | <p>O produto deve ter nome e conter seus ingredientes, imagem(opcional).</p>
+RF03 | <p>Possibilidade de pesquisar por alimentos e visualizar os ingredientes.</p>
+RF04 | <p>Possibilidade de filtrar alimentos que não tenham determinados ingredientes.</p>
+RF05 | <p>Possibilidade de filtrar alimentos que tenham determinados ingredientes.</p>
 
-### `npm test`
+<br/>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> ### 🖥 Telas identificadas para o sistema
 
-### `npm run build`
+### Telas em gerais
+- Tela visão do usuário
+- Tela visão do Administrador
+- Tela do ADM p/ gerenciar produtos
+- Tela do ADM p/ gerenciar fornecedores
+- Tela visão do Fornecedor
+- Tela de login
+- Tela de cadastro
+- Tela com filtro e produtos
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Página inicial
+- Barra de busca
+- Ícone de login e cadastro
+- Barra de navegação
+- Carrossel com opções de produtos
+- Tópicos sobre:
+	- Quem Somos?
+	- Alergia Alimentar.
+	- Principais alergênicos.
+- Botão cadastrar
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Tela de login
+- Usuário
+- Senha
+- Esqueci a senha
+- Opção para se cadastrar (Ir para formulário de cadastro)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Tela de formulário de cadastro
+- Opção de cadastrar Cliente ou Fornecedor
+- Barra de nome
+-   ''      de email
+-   ''      de data de nascimento
+-   ''      de CPF
+-   ''      de senha
+- Botão de cadastro
 
-### `npm run eject`
+### Tela de cadastrar produto
+- Nome do produto
+- Nome da empresa/fabricante
+- Área de ingredientes
+- Área de selecionar uma foto do produto
+- Botão de cadastrar
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Tela de visão de usuário comum
+- Título com a palavra Produtos
+- Cards com os produtos
+- Informações sobre ingredientes e fabricante
+- Foto do produto
+- Botão de cadastrar produtos
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Tela de filtro
+- Título com palavra chave pesquisada
+- Barra de busca
+- Barra de opção de filtragem
+- Cads com resultado da busca
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Tela de visão do administrador
+- Mensagem de boas vindas p/ o ADM
+- Três links para selecionar o tipo de usuário que ele irá administrar
+- Cards de produtos com opções de editar
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+</br>
 
-## Learn More
+> ### 💡 Modelo de Dados Conceitual
+<img src="https://i.pinimg.com/564x/9f/8a/01/9f8a0105758a9b99def47095a1dfc2fb.jpg" />
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+</br>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+> ### 💡 Modela de Dados Lógico
+<img src="https://i.pinimg.com/564x/9c/2c/48/9c2c4831781661a38c9fe3bf05e5fb92.jpg" />
 
-### Code Splitting
+<br/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+> ### 🔁 Passo-a-passo para fazer a clonagem do projeto (repositório)
+```bash
+# Comando para fazer a clonagem do repositório:
+$ git clone https://github.com/heitordiasdev/Ingredientes-em-Foco.git
 
-### Analyzing the Bundle Size
+# Acesse a pasta do projeto:
+$ cd Ingredientes-em-Foco
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# Instale todas as dependências:
+$ npm install
 
-### Making a Progressive Web App
+# Lembre-se! Antes de dar o "npm start" no projeto, inicialize a API com o mesmo comando.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+# A API se encontra no repositório:
+# https://github.com/heitordiasdev/API-Ingredientes-em-Foco
 
-### Advanced Configuration
+# Caso esteja passando a URL base do axios com o arquivo ".env", verifique se o arquivo
+# ".env" está contendo este comendo abaixo dentro do arquivo ".env". 
+$ REACT_APP_API="http://localhost:8080".
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+# Execute o comando abaixo para iniciar o servidor:
+$ npm start
 
-### Deployment
+# Copie a URL abaixo e cole no seu navegador:
+$ http:/localhost:3000
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+# Obs: Certifique-se que as informações deste projeto estejam batendo com as da sua máquina.
+# Ex: os números da porta do sistema, a porta da API e a URL passada no arquivo .env.
 
-### `npm run build` fails to minify
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+</br>
+
+> ### 🚀 Equipe de desenvolvimento - ⚡ Turing
+
+<table align="center">
+  <tr align="center">
+    <td>
+      <a href="https://github.com/heitordiasdev">
+        <img src="https://avatars.githubusercontent.com/heitordiasdev" width=100 />
+        <p>Heitor <br/>Dias</p>
+      </a>
+    </td>
+    <td>
+      <a href="https://github.com/CintiaBraulino">
+        <img src="https://avatars.githubusercontent.com/CintiaBraulino" width=100 />
+        <p>Cintia <br/>Braulino</p>
+      </a>
+    </td>
+    <td>
+      <a href="https://github.com/RubensLFerreira">
+        <img src="https://avatars.githubusercontent.com/RubensLFerreira" width=100 />
+        <p>Rubens <br/>Lima</p>
+      </a>
+    </td>
+    <td>
+      <a href="https://github.com/emillymar">
+        <img src="https://avatars.githubusercontent.com/emillymar" width=100 />
+        <p>Emilly <br/>Marques</p>
+      </a>
+    </td>
+    <td>
+      <a href="https://github.com/Alicia-Alexia">
+        <img src="https://avatars.githubusercontent.com/Alicia-Alexia" width=100 />
+        <p>Alicia <br/>Alexia</p>
+      </a>
+    </td>
+    <td>
+      <a href="https://github.com/IgorPAS">
+        <img src="https://avatars.githubusercontent.com/IgorPAS" width=100 />
+        <p>Igor <br/>Silva</p>
+      </a>
+    </td>
+  </tr>
+  <tr align="center">
+    <td>
+      <a href="https://github.com/aucoliveira">
+        <img src="https://avatars.githubusercontent.com/u/21234981?v=4" width=100 />
+        <p>Augusto <br/>Cesar</p>
+      </a>
+    </td>
+  </tr>
+</table>
