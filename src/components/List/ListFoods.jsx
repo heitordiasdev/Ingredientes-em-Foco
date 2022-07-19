@@ -20,6 +20,7 @@ const ListFoods = ({ foods, loading , setLoading}) => {
   const [msg, setMessage] = useState('');
   
 
+
   const askDeleteProd = (id) => {
     setOpenConfirm(true);
     setDeleteId(id)

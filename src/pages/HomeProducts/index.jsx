@@ -5,6 +5,7 @@ import { CardFood } from '../../components/CardFood';
 import FilterFood from '../../components/FilterFood';
 import { useNavigate } from "react-router-dom";
 import HeaderGlobal from '../../components/Headerglobal';
+import { useNavigate } from "react-router-dom";
 
 export default function HomeProducts() {
   const navigate = useNavigate();
