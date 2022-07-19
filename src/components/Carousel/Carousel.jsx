@@ -11,21 +11,27 @@ import Box from '@mui/material/Box';
 
 function Carousel(props) {
     const [active, setaAtive] = useState(0);
+   
     var items = [
         {
-            img: <img src={FilterOvo} alt="ovo"/>
+            img: <img src={FilterOvo} alt="ovo" />,
+            name: 'ovo'
         },
         {
-            img: <img src={FilterLactose} alt="lactose"/>
+            img: <img src={FilterLactose} alt="lactose"/>,
+            name: 'lactose'
         },
         {
-            img: <img src={FilterCamarao} alt="camarao"/>
+            img: <img src={FilterCamarao} alt="camarao"/>,
+            name: 'camarão'
         },
         {
-            img: <img src={FilterGluten} alt="gluten"/>
+            img: <img src={FilterGluten} alt="gluten"/>,
+            name: 'gluten'
         },
         {
-            img: <img src={FilterAmendoim} alt="amendoim"/>
+            img: <img src={FilterAmendoim} alt="amendoim"/>,
+            name:'amendoim'
         }
     ]
 
@@ -58,7 +64,7 @@ function Carousel(props) {
 function Item(props) {
     return (
        
-        <Button className="CheckButton">
+        <Button className="CheckButton" href={`/home-products-no-ingredient/${props.item.name}`}>
             < Paper sx={{display: 'flex', backgroundColor: '#F5F5F5', justifyContent: 'center', width: '250px', height: '70px'}}>
                 {props.item.img}
             </Paper>

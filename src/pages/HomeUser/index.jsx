@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Typography, ImageList, Card, CardActionArea, CardContent, CardMedia, Button, Stack } from '@mui/material';
-import { foodAll } from '../../services/foodService';
-// import { borderBottom } from '@mui/system';
+import { Box, Typography, ImageList, Card, CardActionArea, Popover, CardContent, CardMedia, Button, Stack } from '@mui/material';
 
+import { foodAll } from '../../services/foodService';
 
 export default function HomeUser() {
 
@@ -16,6 +15,19 @@ export default function HomeUser() {
     }
     loadFood();
   }, []);
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
 
   return (
     <>
@@ -56,24 +68,52 @@ export default function HomeUser() {
               <Card sx={{
                 maxWidth: 280,
                 marginTop: '30px',
+                borderRadius: '15px'
               }}>
                 <CardActionArea>
                   <CardMedia
                     component="img"
-                    height="140"
+                    height="150"
                     image="https://cdn-icons-png.flaticon.com/512/706/706195.png"
                     alt="produto"
                   />
                   <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
+                    <Typography sx={{ textAlign: 'center', fontSize: '20pt' }}>
                       {item.name}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      <b>Fabricante:</b> {item.manufacturer}
+
+                    <Typography variant="body1" color="text.secondary">
+                      <Typography sx={{ color: '#6E9440', fontWeight: 'bolder', marginTop: '8px', fontSize: '15pt' }}>Fabricante:</Typography> {item.manufacturer}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      <b>Ingredientes:</b> {item.ingredients}
+
+                    <Typography variant="body1" color="text.secondary">
+                      <Typography sx={{ color: '#6E9440', fontWeight: 'bolder', marginTop: '8px', fontSize: '15pt' }}>Ingredientes:</Typography> {item.ingredients}
                     </Typography>
+
+                    <Button aria-describedby={id} variant="contained" onClick={handleClick} sx={{
+                      backgroundColor: '#6E9440',
+                      color: 'white',
+                      marginTop: '10px',
+                      '&:hover': {
+                        backgroundColor: '#2e7d32',
+                      },
+                      alignContent: 'end'
+                    }}>
+                      Info. Nutricionais
+                    </Button>
+                    <Popover
+                      id={id}
+                      open={open}
+                      anchorEl={anchorEl}
+                      onClose={handleClose}
+                      anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'left',
+                      }}
+                    >
+                      <Typography sx={{ p: 2 }}>{item.infoNutritional}</Typography>
+                    </Popover>
+
                   </CardContent>
                 </CardActionArea>
               </Card>
@@ -119,9 +159,9 @@ export default function HomeUser() {
               width: '110px',
               margin: 'auto',
               marginTop: '40px',
-              backgroundColor: '#4BB543',
+              backgroundColor: '#388e3c',
               '&:hover': {
-                backgroundColor: '#388e3c',
+                backgroundColor: '#2e7d32',
               },
             }}>Cadastrar</Button>
           </Stack>

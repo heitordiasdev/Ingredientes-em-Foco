@@ -1,18 +1,23 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {Link} from 'react-scroll'
 import { List, ListItem } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 
-export default class Header extends Component {
-    render() {
+export default function Header () {
+    const navigate = useNavigate();
+
+    const Click = () => {
+        navigate('/home-products');
+    }
+
         return (
             <List style={{display: 'flex', listStyle: 'none', backgroundColor: '#52691F', color: 'white', height: 50, justifyContent: 'flex-end'}}>
-                <ListItem style={{width: 'auto', marginRight: 40}}><Link activeClass="active" to="inicio" spy={true} smooth={true}>ÍNICIO</Link></ListItem>
-                <ListItem style={{width: 'auto', marginRight: 40}}><Link  to="sobre" spy={true} smooth={true}>QUEM SOMOS</Link></ListItem>
-                <ListItem style={{width: 'auto', marginRight: 40}}><Link  to="alergia" spy={true} smooth={true}>ALERGIA ALIMENTAR</Link></ListItem>
-                <ListItem style={{width: 'auto', marginRight: 40}}><Link  to="principais" spy={true} smooth={true}>PRINCIPAIS ALÉRGENOS</Link></ListItem>
-                <ListItem style={{width: 'auto', marginRight: 40}}><Link  to="produtos" spy={true} smooth={true}>PRODUTOS</Link></ListItem>
+                <ListItem style={{width: 'auto', marginRight: 40, cursor: 'pointer'}}><Link activeClass="active" to="inicio" spy={true} smooth={true}>ÍNICIO</Link></ListItem>
+                <ListItem style={{width: 'auto', marginRight: 40, cursor: 'pointer'}}><Link  to="sobre" spy={true} smooth={true}>QUEM SOMOS</Link></ListItem>
+                <ListItem style={{width: 'auto', marginRight: 40, cursor: 'pointer'}}><Link  to="alergia" spy={true} smooth={true}>ALERGIA ALIMENTAR</Link></ListItem>
+                <ListItem style={{width: 'auto', marginRight: 40, cursor: 'pointer'}}><Link  to="principais" spy={true} smooth={true}>PRINCIPAIS ALÉRGENOS</Link></ListItem>
+                <ListItem style={{width: 'auto', marginRight: 40, cursor: 'pointer' }} onClick={Click}>PRODUTOS</ListItem>
             </List>
         )
-    }
 }
