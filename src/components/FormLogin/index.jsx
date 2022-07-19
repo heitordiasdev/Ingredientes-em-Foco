@@ -6,6 +6,7 @@ import { Button, Card, CardContent, Grid, Typography, Alert, styled, Box, Link} 
 import Login from '../../assets/Register.png';
 import { AuthContext } from '../../contexts/AuthContext';
 
+
 const StyledBox = styled(Box)(
   {
     backgroundImage: `url(${Login})`,
@@ -21,6 +22,7 @@ export default function FormLogin() {
   const [alert, setAlert] = useState(false);
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
+
   const auth = useContext(AuthContext);
 
   const handleLogin = async () =>{
@@ -42,7 +44,7 @@ export default function FormLogin() {
     navigate('/register')
   }
 
-  
+
   return (
 
     <StyledBox>
