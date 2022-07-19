@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import TextField from '@mui/material/TextField';
-import { Button, Card, CardContent, Grid, Typography, Alert, styled, Box } from '@mui/material';
+import { Button, Card, CardContent, Grid, Typography, Alert, styled, Box} from '@mui/material';
 import Login from '../../assets/Register.png';
 import { AuthContext } from '../../contexts/AuthContext';
-import { useNavigate } from "react-router-dom";
 
 const StyledBox = styled(Box)(
   {
@@ -13,6 +13,7 @@ const StyledBox = styled(Box)(
     height: '80vh',
   }
 );
+
 
 export default function FormLogin() {
 
@@ -37,6 +38,9 @@ export default function FormLogin() {
     }
   };
   
+  const ClickRegister = () => {
+    navigate('/register')
+  }
   return (
 
     <StyledBox>
@@ -93,7 +97,19 @@ export default function FormLogin() {
           </Alert>
         </Box>
       )}
-    </StyledBox>
 
+      <Box>
+      <Typography variant='h5' sx={{color: 'white', paddingTop: '590px', marginLeft: '800px'}}>
+          Ainda não possui uma conta?
+        </Typography>
+      <Typography variant='h7' sx={{color: 'black', marginLeft: '800px'}}>
+          Clique aqui para cadastrar!
+      </Typography>
+      <Grid>
+      <Button size='large' variant='contained' color='success' sx={{margin: 'auto', marginLeft: '850px', marginTop: '20px',
+      backgroundColor: '#388e3c', '&:hover': {backgroundColor: '#2e7d32',},}} onClick={ClickRegister}> Cadastre-se </Button>
+      </Grid>
+      </Box>
+    </StyledBox>
   );
 };
