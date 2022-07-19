@@ -16,7 +16,7 @@ function Provider() {
           setFoods(getFoodsFromApi);
           setLoading(false);
         })();
-  }, []);
+  }, [getFoods]);
     return (
         <>
           <ListFoods foods={foods} loading={loading} />

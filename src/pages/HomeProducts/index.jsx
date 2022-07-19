@@ -3,8 +3,10 @@ import { foodAll } from '../../services/foodService';
 import { Box, Typography, Button } from '@mui/material';
 import { CardFood } from '../../components/CardFood';
 import FilterFood from '../../components/FilterFood';
+import { useNavigate } from "react-router-dom";
 
 export default function HomeProducts() {
+  const navigate = useNavigate();
   const [food, setFood] = useState([]);
 
   useEffect(() =>{
@@ -14,6 +16,10 @@ export default function HomeProducts() {
     }
     loadFood();
   },[]);
+
+  const Click = () => {
+    navigate('/home-admin')
+  }
 
     return(
       <>
@@ -31,7 +37,7 @@ export default function HomeProducts() {
         </Typography>
         <Typography sx={{ color: '#453F38', fontSize: '25px', textAlign: 'center', fontWeight: 'bolder', marginTop: '30px'}}>
           Cadastre-se em nossa comunidade:
-          <Button href='/login' sx={{ width: '300px', height:'80px', margin: 5, fontSize:'20px', borderRadius:'37px', backgroundColor: '#E52928','&:hover': {backgroundColor: '#E52928',},}}>
+          <Button onClick={Click} sx={{ width: '300px', height:'80px', margin: 5, fontSize:'20px', borderRadius:'37px', backgroundColor: '#E52928','&:hover': {backgroundColor: '#E52928',},}}>
             Cadastrar
           </Button>
         </Typography>

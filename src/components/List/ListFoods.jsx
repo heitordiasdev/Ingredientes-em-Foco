@@ -1,7 +1,4 @@
 import React from "react";
-import { styled } from '@mui/material/styles';
-import IconButton from '@mui/material/IconButton';
-import Dialog from '@mui/material/Dialog';
 import DialogContentText from '@mui/material/DialogContentText';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import { Box, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, List, LinearProgress, Typography, Button } from '@mui/material';
@@ -25,9 +22,6 @@ const ListFoods = ({ foods, loading }) => {
     setEditedItem({id:item.id, name:item.name, manufacturer:item.manufacturer, ingredients:item.ingredients, infoNutritional:info })
     // console.log('Pra editar',editedItem)
     setOpenEdit(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
   };
   const showMessage = (message) => {
     console.log('message', message)

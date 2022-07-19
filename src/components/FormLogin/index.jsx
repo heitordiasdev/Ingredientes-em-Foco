@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import { Button, Card, CardContent, Grid, Typography, Alert, styled, Box } from '@mui/material';
 import Login from '../../assets/Register.png';
-
+import { AuthContext } from '../../contexts/AuthContext';
+import { useNavigate } from "react-router-dom";
 
 const StyledBox = styled(Box)(
   {
@@ -15,9 +16,26 @@ const StyledBox = styled(Box)(
 
 export default function FormLogin() {
 
+  const navigate = useNavigate();
   const [alert, setAlert] = useState(false);
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
+  const auth = useContext(AuthContext);
+
+  const handleLogin = async () =>{
+    if (email && password) {
+      const isLogged = await auth.signin(email, password);
+      if (isLogged) {
+        if(email === 'admin@gmail.com'){
+          navigate("/home-admin");
+        } else{
+          navigate("/home-user");
+        } 
+      } else {
+        console.log('deu ruim');
+      }
+    }
+  };
   
   return (
 
@@ -60,7 +78,7 @@ export default function FormLogin() {
                 </Typography>
               </Grid>
               <Grid xs={12} item>
-                <Button size='large' type='submit' variant='contained' color='success'> Login </Button>
+                <Button size='large' type='button' variant='contained' color='success' onClick={handleLogin}> Login </Button>
               </Grid>
             </Grid>
           </form>

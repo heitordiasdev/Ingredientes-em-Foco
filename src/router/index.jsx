@@ -6,6 +6,7 @@ import { UserAdmin} from '../pages'
 import Login from "../pages/Login";
 import Register from "../pages/Register"; 
 import { HomeUser } from '../pages'
+import { RequireAuth } from "../contexts/RequireAuth";
 
 export function Router() {
     return (
@@ -14,9 +15,9 @@ export function Router() {
 
         <Route path="/provider" element={<Provider />}/>
 
-        <Route path="/home-admin" element={<HomeAdmin/>}/>
-        <Route path="/home-admin/user-admin" element={<UserAdmin/>}/>
-        <Route path="/home-admin/provider-admin" element={<ProviderAdmin />}/>
+        <Route path="/home-admin" element={<RequireAuth><HomeAdmin /></RequireAuth>}/>
+        <Route path="/home-admin/user-admin" element={<RequireAuth><UserAdmin/></RequireAuth>}/>
+        <Route path="/home-admin/provider-admin" element={<RequireAuth><ProviderAdmin /></RequireAuth>}/>
 
         <Route path="/home-products" element={<HomeProducts />}/>
         <Route path="/home-products-filter-ingredient/:ingredient" element={<FilterIngredient />}/>
@@ -32,7 +33,7 @@ export function Router() {
 
         <Route path="/login" element={<Login/>}/>
 
-        <Route path="/home-user" element={<HomeUser />} />
+        <Route path="/home-user" element={<RequireAuth><HomeUser /></RequireAuth>} />
         </Routes>
     )
 }
