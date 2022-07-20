@@ -74,7 +74,7 @@ export default function HomeUser() {
                   <CardMedia
                     component="img"
                     height="150"
-                    image="https://cdn-icons-png.flaticon.com/512/706/706195.png"
+                    image="https://source.unsplash.com/random/?food"
                     alt="produto"
                   />
                   <CardContent>
@@ -82,12 +82,20 @@ export default function HomeUser() {
                       {item.name}
                     </Typography>
 
-                    <Typography variant="body1" color="text.secondary">
-                      <Typography sx={{ color: '#6E9440', fontWeight: 'bolder', marginTop: '8px', fontSize: '15pt' }}>Fabricante:</Typography> {item.manufacturer}
+                    <Typography sx={{ fontSize: 20, color: '#6E9440', fontWeight:'bolder', marginTop: '8px'}}>
+                        Fabricante:
                     </Typography>
 
-                    <Typography variant="body1" color="text.secondary">
-                      <Typography sx={{ color: '#6E9440', fontWeight: 'bolder', marginTop: '8px', fontSize: '15pt' }}>Ingredientes:</Typography> {item.ingredients}
+                    <Typography sx={{ fontSize: 17}}>
+                        {item.manufacturer}
+                    </Typography>
+
+                    <Typography sx={{ fontSize: 20, color: '#6E9440', fontWeight:'bolder', marginTop: '8px'}}>
+                        Ingredientes:
+                    </Typography>
+                    
+                    <Typography sx={{ fontSize: 17}}>
+                        {item.ingredients}
                     </Typography>
 
                     <Button aria-describedby={id} variant="contained" onClick={handleClick} sx={{
