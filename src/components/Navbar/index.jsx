@@ -9,7 +9,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import { useNavigate } from 'react-router-dom';
 
 const StyledToolbar = styled(Toolbar)({
-    height: "100px",
+    height: "13vh",
     backgroundColor:"#E4E4E4",
     display:"flex",
     justifyContent:"space-between"
