@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Typography, ImageList, Card, CardActionArea, CardContent, CardMedia, Button, Stack } from '@mui/material';
-import { foodAll } from '../../services/foodService';
-// import { borderBottom } from '@mui/system';
+import { Box, Typography, ImageList, Card, CardActionArea, Popover, CardContent, CardMedia, Button, Stack } from '@mui/material';
 
+import { foodAll } from '../../services/foodService';
 
 export default function HomeUser() {
 
@@ -16,6 +15,19 @@ export default function HomeUser() {
     }
     loadFood();
   }, []);
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
 
   return (
     <>
@@ -56,24 +68,60 @@ export default function HomeUser() {
               <Card sx={{
                 maxWidth: 280,
                 marginTop: '30px',
+                borderRadius: '15px'
               }}>
                 <CardActionArea>
                   <CardMedia
                     component="img"
-                    height="140"
-                    image="https://cdn-icons-png.flaticon.com/512/706/706195.png"
+                    height="150"
+                    image="https://source.unsplash.com/random/?food"
                     alt="produto"
                   />
                   <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
+                    <Typography sx={{ textAlign: 'center', fontSize: '20pt' }}>
                       {item.name}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      <b>Fabricante:</b> {item.manufacturer}
+
+                    <Typography sx={{ fontSize: 20, color: '#6E9440', fontWeight:'bolder', marginTop: '8px'}}>
+                        Fabricante:
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      <b>Ingredientes:</b> {item.ingredients}
+
+                    <Typography sx={{ fontSize: 17}}>
+                        {item.manufacturer}
                     </Typography>
+
+                    <Typography sx={{ fontSize: 20, color: '#6E9440', fontWeight:'bolder', marginTop: '8px'}}>
+                        Ingredientes:
+                    </Typography>
+                    
+                    <Typography sx={{ fontSize: 17}}>
+                        {item.ingredients}
+                    </Typography>
+
+                    <Button aria-describedby={id} variant="contained" onClick={handleClick} sx={{
+                      backgroundColor: '#6E9440',
+                      color: 'white',
+                      marginTop: '10px',
+                      '&:hover': {
+                        backgroundColor: '#2e7d32',
+                      },
+                      alignContent: 'end'
+                    }}>
+                      Info. Nutricionais
+                    </Button>
+                    <Popover
+                      id={id}
+                      open={open}
+                      anchorEl={anchorEl}
+                      onClose={handleClose}
+                      anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'left',
+                      }}
+                    >
+                      <Typography sx={{ p: 2, maxWidth: '350px' }}>{item.infoNutritional}</Typography>
+                    </Popover>
+
                   </CardContent>
                 </CardActionArea>
               </Card>
@@ -119,9 +167,9 @@ export default function HomeUser() {
               width: '110px',
               margin: 'auto',
               marginTop: '40px',
-              backgroundColor: '#4BB543',
+              backgroundColor: '#388e3c',
               '&:hover': {
-                backgroundColor: '#388e3c',
+                backgroundColor: '#2e7d32',
               },
             }}>Cadastrar</Button>
           </Stack>
