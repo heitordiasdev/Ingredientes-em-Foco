@@ -22,9 +22,6 @@ function DialogNewProd(props) {
   const [newIngredients, setIngredients] = useState('')
   const [newIngredientsCheck, setIngredientsCheck] = useState('')
 
-  useEffect(() => {
-  }, [error, newName, newManufacture, newIngredients, newIngredientsCheck, rows ]);
-
   const addRow = (index) => {
     setRows([...rows, { name:'', quantity:'', vd:''}])
   }
