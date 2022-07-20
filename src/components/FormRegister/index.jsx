@@ -59,7 +59,7 @@ export default function FormRegister() {
           <form onSubmit={() => setAlert(true)}>
             <Grid container spacing={1}>
               <Grid xs={12} item>
-                <TextField sx={{ backgroundColor: 'white' }} label='Nome' required placeholder='Digite seu Nome' variant='outlined' fullWidth onChange={(event) => setName(event.target.value)} />
+                <TextField sx={{ backgroundColor: 'white'}} label='Nome' required placeholder='Digite seu Nome' variant='outlined' fullWidth onChange={(event) => setName(event.target.value)} />
               </Grid>
               <Grid xs={12} item>
                 <TextField sx={{ backgroundColor: 'white' }} type='email' label='E-mail' required placeholder='Digite seu E-mail' variant='outlined' fullWidth onChange={(event) => setEmail(event.target.value)} />
