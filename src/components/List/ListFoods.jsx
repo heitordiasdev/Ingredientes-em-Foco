@@ -1,17 +1,44 @@
 import React from "react";
+import DeleteIcon from '@mui/icons-material/Delete';
 import DialogContentText from '@mui/material/DialogContentText';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
-import { Box, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, List, LinearProgress, Typography, Button } from '@mui/material';
+import { Box, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, List, LinearProgress, Typography, Button, Dialog } from '@mui/material';
 import MenuLateral from '../MenuLateral';
 import FormNewProd from '../Forms/addFoods';
 import FormEditProd from '../Forms/editFoods';
-import { useState } from 'react';
+import ConfirmDialog from '../Forms/confirm';
+import { useState, useEffect } from 'react';
+import { deleteFood }from '../../services/foodService';
 
-const ListFoods = ({ foods, loading }) => {
+
+const ListFoods = ({ foods, loading , setLoading}) => {
   const [open, setOpen] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
+  const [openConfirm, setOpenConfirm] = useState(false);
+  const [deleteItem, setDeleteId] = useState('');
   const [editedItem, setEditedItem] = useState({});
   const [msg, setMessage] = useState('');
+  
+
+  const askDeleteProd = (id) => {
+    setOpenConfirm(true);
+    setDeleteId(id)
+  };
+
+  const deleteProd = async () => {
+    setOpenConfirm(false);
+    const resp = await deleteFood(deleteItem)
+    showMessage(resp.message, true)
+    setDeleteId('')
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  useEffect(() => {
+    console.log('edited hook', editedItem)
+  }, [editedItem])
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -30,6 +57,9 @@ const ListFoods = ({ foods, loading }) => {
 
   return (
     <Box sx={{display: 'flex', flexDirection:'row', minHeight:'79vh'}}>
+      <FormNewProd open={open} setOpen={setOpen} message={showMessage}/>
+      <FormEditProd open={openEdit} setOpen={setOpenEdit} message={showMessage} item={editedItem}/>
+      <ConfirmDialog open={openConfirm} setOpen={setOpenConfirm} confirm={deleteProd} ></ConfirmDialog>
       <Box sx={{alignSelf: 'center', p:5}}>
           <List>
             <MenuLateral icon={'person'} label={'USUARIOS'} to={'/home-admin/user-admin'}/>
@@ -49,8 +79,6 @@ const ListFoods = ({ foods, loading }) => {
                     <DialogContentText xs={8} sm={8} onClick={()=>showMessage('')} sx={{ color: '#52691F' ,alignSelf: 'center' ,float:'rigth'}}>{msg}</DialogContentText>
                   ):(<></>)}
                 </Grid>
-              <FormNewProd open={open} setOpen={setOpen} message={showMessage}/>
-              <FormEditProd open={openEdit} setOpen={setOpenEdit} message={showMessage} item={editedItem}/>
                 {loading?(<LinearProgress style={{width:'50%', margin:'20px auto'}}  />):(
                 <Table className aria-label="simple table">
                   <TableHead>
@@ -61,19 +89,22 @@ const ListFoods = ({ foods, loading }) => {
                       <TableCell align="center">AÇÕES</TableCell>
                     </TableRow>
                   </TableHead>
-                  {foods.data ?
-                    foods.data.map((row) => (
-                      <TableBody sx={{ borderRadius: '37px' }}>
+                  {foods.length > 0 ?(
+                    <TableBody sx={{ borderRadius: '37px' }}>
+                        { foods.map( (row) => (
                         <TableRow key={row.id}>
                           <TableCell align="center">{row.id}</TableCell>
                           <TableCell component="th"  align="center" scope="row">{row.name}</TableCell>
-                          <TableCell component="th"  align="center" scope="row">{row.ingredients}</TableCell>
-                          <TableCell component="th"  align="center" scope="row"><ModeEditIcon onClick={()=>editProdOpen(row)}></ModeEditIcon>
-                          </TableCell>
+                          <TableCell component="th"  align="center" scope="row">{row.ingredients}, {JSON.parse(row.infoNutritional)['options']}</TableCell>
+                          <TableCell component="th"  align="center" scope="row"><ModeEditIcon onClick={()=>editProdOpen(row)}></ModeEditIcon> <DeleteIcon onClick={()=>askDeleteProd(row.id)} /></TableCell>
                         </TableRow>
-                      </TableBody>
+                        ))}
+                     </TableBody>
+                    ): ( 
+                        <TableBody  align="center" sx={{ borderRadius: '37px', margin: 'auto' }}>
+                            Nenhum produto encontrado
+                        </TableBody>
                     )
-                    ): (<>{foods.message}</>)
                   }
                 </Table>)}
               </TableContainer>
