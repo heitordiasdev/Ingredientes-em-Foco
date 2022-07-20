@@ -66,7 +66,7 @@ export function CardFood({food}){
                         horizontal: 'left',
                       }}
                     >
-                      <Typography sx={{ p: 2 }}>{item.infoNutritional}</Typography>
+                      <Typography sx={{ p: 2, maxWidth: '350px' }}>{item.infoNutritional}</Typography>
                     </Popover>
                  </CardContent>
                 </Card>
