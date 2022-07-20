@@ -78,7 +78,7 @@ export default function HomeUser() {
                     alt="produto"
                   />
                   <CardContent>
-                    <Typography sx={{ textAlign: 'center', fontSize: '20pt' }}>
+                    <Typography gutterBottom variant="h5" component="div" sx={{ textAlign:'center'}}>
                       {item.name}
                     </Typography>
 
