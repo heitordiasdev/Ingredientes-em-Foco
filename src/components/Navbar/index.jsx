@@ -22,7 +22,7 @@ const Icons = styled("Box")(({theme}) => ({
 }));
 
 
-const Navbar = () => {
+export default function Navbar(){
     const[text, setText] = useState('');
     const navigate = useNavigate();
     const auth = useContext(AuthContext);
@@ -48,7 +48,7 @@ const Navbar = () => {
         {
         auth.user.id ?(
             <StyledToolbar>
-            <Box component="img" sx={{height:100, cursor:'pointer'}} alt="ingredients in foco" src={Logo} onClick={ClickImage}/>
+            <img sx={{height:100, cursor:'pointer'}} alt="ingredients in foco" src={Logo} onClick={ClickImage}/>
             <Paper
                 component="form"
                 sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '40%', borderRadius: '37px' }}
@@ -99,4 +99,3 @@ const Navbar = () => {
       </AppBar> 
     )
 }
-export default Navbar

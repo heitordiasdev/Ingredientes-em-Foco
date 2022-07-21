@@ -19,7 +19,6 @@ export default function FilteredProduct() {
           <Typography sx={{ fontSize: 35,  color: '#453F38', textAlign:'center'}} >Pesquisando por: <Typography sx={{ fontSize: 35,  color: '#453F38', textAlign:'center', fontWeight:'bolder'}} >{' '}{product}</Typography> </Typography>
           <Outlet />
         </Box>
-        
       </Box>
       </>
 
