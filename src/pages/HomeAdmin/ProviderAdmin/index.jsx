@@ -20,6 +20,7 @@ export default function ProviderAdmin() {
     
 
     return (
+
       <>
       <Stack sx={{ display: 'flex', overflow: 'auto',mt:'50px', alignItems: 'center'}}>
         <Typography sx={{ fontSize: 40,  color: '#E52928', textAlign:'center', fontWeight:'bolder'}} >GERENCIAR FORNECEDORES</Typography>

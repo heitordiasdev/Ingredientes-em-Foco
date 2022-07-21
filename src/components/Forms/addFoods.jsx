@@ -22,6 +22,7 @@ function DialogNewProd(props) {
   const [newIngredients, setIngredients] = useState('')
   const [newIngredientsCheck, setIngredientsCheck] = useState('')
 
+
   useEffect(() => {
   }, [error, newName, newManufacture, newIngredients, newIngredientsCheck, rows ]);
 

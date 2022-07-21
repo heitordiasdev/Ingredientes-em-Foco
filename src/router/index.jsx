@@ -29,7 +29,6 @@ export function Router() {
                 <Route path="food-filter-no-ingredient/:ingredient" element={<FoodNoFilterIngredient />}/>
             </Route>
 
-
             <Route path="/provider" element={<Provider />}/>
 
             <Route path="/home-admin" element={<RequireAuth><HomeAdmin /></RequireAuth>}>
