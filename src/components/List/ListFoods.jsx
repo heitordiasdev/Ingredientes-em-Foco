@@ -19,13 +19,6 @@ const ListFoods = ({ foods, loading , setLoading}) => {
   const [editedItem, setEditedItem] = useState({});
   const [msg, setMessage] = useState('');
   
-  const editProdOpen = async (item) => {
-    console.log('Pra editar item',item)
-    const info = item.infoNutritional.length>0?JSON.parse(item.infoNutritional):[]
-    setEditedItem({id:item.id, name:item.name, manufacturer:item.manufacturer, ingredients:item.ingredients, infoNutritional:info })
-    setOpenEdit(true);
-  };
-
   const askDeleteProd = (id) => {
     setOpenConfirm(true);
     setDeleteId(id)
@@ -42,8 +35,23 @@ const ListFoods = ({ foods, loading , setLoading}) => {
     setOpen(false);
   };
 
-  const showMessage = (message, refrech) => {
-    console.log('message refresh', refrech)
+  useEffect(() => {
+    console.log('edited hook', editedItem)
+  }, [editedItem])
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const editProdOpen = async (item) => {
+    console.log('Pra editar item',item)
+    const info = item.infoNutritional.length>0?JSON.parse(item.infoNutritional):[]
+    setEditedItem({id:item.id, name:item.name, manufacturer:item.manufacturer, ingredients:item.ingredients, infoNutritional:info })
+    setOpenEdit(true);
+  };
+
+  const showMessage = (message) => {
+    console.log('message', message)
     setMessage(message)
     setLoading()
   };

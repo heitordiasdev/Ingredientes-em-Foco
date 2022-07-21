@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import TextField from '@mui/material/TextField';
 import { Button, Card, CardContent, Grid, Typography, Alert, styled, Box, Link} from '@mui/material';
 import Login from '../../assets/Register.png';
+import { AuthContext } from '../../contexts/AuthContext';
 
 
 const StyledBox = styled(Box)(
@@ -17,14 +18,29 @@ const StyledBox = styled(Box)(
 
 export default function FormLogin() {
 
+  const navigate = useNavigate();
   const [alert, setAlert] = useState(false);
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
-  const navigate = useNavigate();
 
+  const auth = useContext(AuthContext);
+
+  const handleLogin = async () =>{
+    if (email && password) {
+      const isLogged = await auth.signin(email, password);
+      if (isLogged) {
+        navigate('/')
+      } else {
+        console.log('deu ruim');
+      }
+    }
+  };
+  
   const ClickRegister = () => {
     navigate('/register')
   }
+
+
   return (
 
     <StyledBox>
@@ -66,7 +82,7 @@ export default function FormLogin() {
                 </Typography>
               </Grid>
               <Grid xs={12} item>
-                <Button size='large' type='submit' variant='contained' color='success' sx={{marginBottom: '3%'}}> Login </Button>
+                <Button onClick={handleLogin} size='large' variant='contained' color='success' sx={{marginBottom: '3%'}}> Login </Button>
       
               </Grid>
               <Grid xs={12}>
