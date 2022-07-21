@@ -4,7 +4,7 @@ import { Box, Typography, Button } from '@mui/material';
 import { CardFood } from '../../../components/CardFood';
 import FilterFood from '../../../components/FilterFood';
 import { filterNoIngredient } from '../../../services/foodService';
-import HeaderGlobal from '../../../components/HeaderGlobal';
+import HeaderGlobal from '../../../components/Headerglobal';
 
 
 export default function FilterNoIngredient() {

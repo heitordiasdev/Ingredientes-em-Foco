@@ -4,7 +4,7 @@ import { Box, Typography, Button } from '@mui/material';
 import { CardFood } from '../../components/CardFood';
 import FilterFood from '../../components/FilterFood';
 import { useNavigate } from "react-router-dom";
-import HeaderGlobal from '../../components/HeaderGlobal';
+import HeaderGlobal from '../../components/Headerglobal';
 
 export default function HomeProducts() {
   const navigate = useNavigate();

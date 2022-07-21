@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import MenuLateral from '../../components/MenuLateral';
 import { foodAll } from '../../services/foodService';
 import Food from '../../assets/Food.png';
-import HeaderGlobal from '../../components/HeaderGlobal';
+import HeaderGlobal from '../../components/Headerglobal';
 
 
 export default function HomeAdmin() {

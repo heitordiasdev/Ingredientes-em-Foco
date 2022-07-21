@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Typography, ImageList, Card, CardActionArea, Popover, CardContent, CardMedia, Button, Stack } from '@mui/material';
 
 import { foodAll } from '../../services/foodService';
-import HeaderGlobal from '../../components/HeaderGlobal';
+import HeaderGlobal from '../../components/Headerglobal';
 
 export default function HomeUser() {
 
