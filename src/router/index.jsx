@@ -7,6 +7,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register"; 
 import { HomeUser } from '../pages'
 import { RequireAuth } from "../contexts/RequireAuth";
+import { NotFound } from '../pages'
 
 export function Router() {
     return (
@@ -34,6 +35,8 @@ export function Router() {
         <Route path="/login" element={<Login/>}/>
 
         <Route path="/home-user" element={<RequireAuth><HomeUser /></RequireAuth>} />
+  
+        <Route path="*" element={<NotFound />} />
         </Routes>
     )
 }
