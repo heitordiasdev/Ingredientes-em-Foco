@@ -48,7 +48,7 @@ export default function Navbar(){
         {
         auth.user.id ?(
             <StyledToolbar>
-            <img sx={{height:100, cursor:'pointer'}} alt="ingredients in foco" src={Logo} onClick={ClickImage}/>
+             <Box component="img" sx={{height:100, cursor:'pointer'}} alt="ingredients in foco" src={Logo} onClick={ClickImage}/>
             <Paper
                 component="form"
                 sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '40%', borderRadius: '37px' }}
