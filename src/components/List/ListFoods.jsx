@@ -60,9 +60,7 @@ const ListFoods = ({ foods, loading , setLoading}) => {
     console.log('edited hook', editedItem)
   }, [editedItem])
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+
 
   return (
     <Box sx={{display: 'flex', flexDirection:'row', minHeight:'79vh'}}>
