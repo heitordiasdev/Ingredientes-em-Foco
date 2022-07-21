@@ -9,7 +9,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import { useNavigate } from 'react-router-dom';
 
 const StyledToolbar = styled(Toolbar)({
-    height: "100px",
+    height: "13vh",
     backgroundColor:"#E4E4E4",
     display:"flex",
     justifyContent:"space-between"
@@ -39,7 +39,7 @@ const Navbar = () => {
     return (
       <AppBar position="sticky">
         <StyledToolbar>
-            <Box component="img" sx={{height:100, cursor:'pointer'}} alt="ingredients in foco" src={Logo} onClick={ClickImage}/>
+            <Box component="img" sx={{height:'13vh'}} alt="ingredients in foco" src={Logo} onClick={ClickImage}/>
             <Paper
                 component="form"
                 sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '40%', borderRadius: '37px' }}

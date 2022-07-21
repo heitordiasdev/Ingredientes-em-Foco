@@ -20,7 +20,7 @@ export default function HomeProducts() {
       <>
       <HeaderGlobal></HeaderGlobal>
       <Box sx={{display: 'flex', overflow: 'auto', backgroundColor:'#0000001C'}}>
-        <Box sx={{width:'20%', alignSelf: 'center', p:5}}>
+        <Box sx={{width:'20%', alignSelf: 'start', p:5}}>
           <FilterFood to1={'/home-products-filter-ingredient'} to2={'/home-products-no-ingredient'} to3={'/home-products'}/>
         </Box>
         <Box sx={{ flexGrow: 1, p: 3, }}>
