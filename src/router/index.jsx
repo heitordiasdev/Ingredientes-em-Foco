@@ -6,6 +6,7 @@ import { UserAdmin} from '../pages'
 import Login from "../pages/Login";
 import Register from "../pages/Register"; 
 import { HomeUser } from '../pages'
+import { NotFound } from '../pages'
 
 export function Router() {
     return (
@@ -33,6 +34,7 @@ export function Router() {
         <Route path="/login" element={<Login/>}/>
 
         <Route path="/home-user" element={<HomeUser />} />
+        <Route path="*" element={<NotFound />} />
         </Routes>
     )
 }

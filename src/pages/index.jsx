@@ -11,6 +11,9 @@ import FoodFilter from './FilteredProduct/FoodFilter';
 import FoodFilterIngredient from './FilteredProduct/FoodFilterIngredient';
 import FoodNoFilterIngredient from './FilteredProduct/FoodNoFilterIngredient';
 import ProviderAdmin from './HomeAdmin/ProviderAdmin';
+import NotFound from './NotFound';
+
+export {NotFound};
 
 export {Home};
 
