@@ -1,15 +1,12 @@
 import { useContext } from 'react';
-import { HomeAdmin } from '../pages';
-import Login from '../pages/Login';
+import { Home} from '../pages';
 import { AuthContext} from './AuthContext';
 
 export const RequireAuth = ({ children }) => {
     const auth = useContext(AuthContext);
-    if (auth.user.name === 'admin') {
-        return <HomeAdmin />;
-    }
-    else if (!auth.user.id) {
-        return <Login />;
+    
+    if (!auth.user.id) {
+        return <Home />;
     }
 
     return children;

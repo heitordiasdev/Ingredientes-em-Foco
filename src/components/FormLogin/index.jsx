@@ -29,11 +29,7 @@ export default function FormLogin() {
     if (email && password) {
       const isLogged = await auth.signin(email, password);
       if (isLogged) {
-        if(email === 'admin@gmail.com'){
-          navigate("/home-admin");
-        } else{
-          navigate("/home-user");
-        } 
+        navigate('/')
       } else {
         console.log('deu ruim');
       }
@@ -45,7 +41,6 @@ export default function FormLogin() {
   }
 
 
-  
   return (
 
     <StyledBox>
@@ -87,7 +82,7 @@ export default function FormLogin() {
                 </Typography>
               </Grid>
               <Grid xs={12} item>
-                <Button size='large' type='submit' variant='contained' color='success' sx={{marginBottom: '3%'}}> Login </Button>
+                <Button onClick={handleLogin} size='large' variant='contained' color='success' sx={{marginBottom: '3%'}}> Login </Button>
       
               </Grid>
               <Grid xs={12}>
@@ -112,19 +107,6 @@ export default function FormLogin() {
           </Alert>
         </Box>
       )}
-
-      <Box>
-      <Typography variant='h5' sx={{color: 'white', paddingTop: '590px', marginLeft: '800px'}}>
-          Ainda não possui uma conta?
-        </Typography>
-      <Typography variant='h7' sx={{color: 'black', marginLeft: '800px'}}>
-          Clique aqui para cadastrar!
-      </Typography>
-      <Grid>
-      <Button size='large' variant='contained' color='success' sx={{margin: 'auto', marginLeft: '850px', marginTop: '20px',
-      backgroundColor: '#388e3c', '&:hover': {backgroundColor: '#2e7d32',},}} onClick={ClickRegister}> Cadastre-se </Button>
-      </Grid>
-      </Box>
     </StyledBox>
   );
 };
