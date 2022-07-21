@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { Outlet, useParams } from 'react-router-dom';
 import FilterFood from '../../components/FilterFood';
-import HeaderGlobal from '../../components/HeaderGlobal';
+import HeaderGlobal from '../../components/Headerglobal';
 
 
 export default function FilteredProduct() {

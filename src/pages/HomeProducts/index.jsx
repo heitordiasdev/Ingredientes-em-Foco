@@ -3,7 +3,7 @@ import { foodAll } from '../../services/foodService';
 import { Box, Typography, Button } from '@mui/material';
 import { CardFood } from '../../components/CardFood';
 import FilterFood from '../../components/FilterFood';
-import HeaderGlobal from '../../components/HeaderGlobal';
+import HeaderGlobal from '../../components/Headerglobal';
 
 export default function HomeProducts() {
   const [food, setFood] = useState([]);

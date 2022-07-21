@@ -2,7 +2,7 @@ import { Box, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHea
 import React, { useEffect, useState } from 'react';
 import { usersAll } from '../../../services/userService';
 import MenuLateral from '../../../components/MenuLateral';
-import HeaderGlobal from '../../../components/HeaderGlobal';
+import HeaderGlobal from '../../../components/Headerglobal';
 
 
 
