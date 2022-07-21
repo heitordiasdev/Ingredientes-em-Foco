@@ -7,6 +7,8 @@ import FilterCamarao from './../../assets/FilterCamarao.png'
 import FilterGluten from './../../assets/FilterGluten.png';
 import FilterAmendoim from './../../assets/FilterAmendoim.png';
 import Box from '@mui/material/Box';
+import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
+import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 
 
 function Carousel(props) {
@@ -36,21 +38,34 @@ function Carousel(props) {
     ]
 
     return (
-        <div class="carousel" sx={{width: "80%", display : "flex", justifyContent : 'center', backgroundColor: "red"}}>
-            <Box style={{marginLeft:30, width: "80%"}}>
+        <div class="carousel">
+            <Box sx={{padding:"0 60px",maxWidth:800,margin:"0 auto"}}>
           
                 <ItemsCarousel
                     infiniteLoop={true}
-                    gutter={12}
-                    timeout={1}
-                    chevronWidth={40}
+                    gutter={5}
+                    activePosition={'center'}
+                    chevronWidth={30}
+                    disableSwipe={false}
+                    alwaysShowChevrons={true}
                     numberOfCards={3}
+                    slidesToScroll={2}
                     outsideChevron={true}
+                    showSlither={false}
+                    firstAndLastGutter={false}
                     activeItemIndex={active}
                     requestToChangeActive={(value) => setaAtive(value)}
-                    rightChevron={">"}
-                    leftChevron={"<"}
-            >
+                    rightChevron={<ArrowCircleRightIcon sx={{ color: "#E4E4E4",
+                    "&:hover, &.Mui-focusVisible": {
+                        transition: '0.4s',
+                        color: '#52691F',
+                    } }} />}
+                    leftChevron={<ArrowCircleLeftIcon sx={{ color: "#E4E4E4",
+                    "&:hover, &.Mui-focusVisible": {
+                        transition: '0.4s',
+                        color: '#52691F',
+                    } }} />}
+                >
                 {
                     items.map( (item, i) => <Item key={i} item={item} /> )
                 }
