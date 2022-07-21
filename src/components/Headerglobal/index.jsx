@@ -14,9 +14,8 @@ export default function HeaderGlobal () {
     }
     return (
         <List style={{display: 'flex', listStyle: 'none', backgroundColor: '#52691F', color: 'white', height: 50, justifyContent: 'flex-end'}}>
-            <ListItem style={{width: 'auto', marginRight: 40}} onClick={ClickImage}>ÍNICIO</ListItem>
-            <ListItem style={{width: 'auto', marginRight: 40}} onClick={Click}>PRODUTOS</ListItem>
-            <ListItem style={{width: 'auto', marginRight: 40}} onClick={Click}>AREA CLIENTE</ListItem>
+            <ListItem style={{width: 'auto', marginRight: 40, cursor: 'pointer'}} onClick={ClickImage}>ÍNICIO</ListItem>
+            <ListItem style={{width: 'auto', marginRight: 40, cursor: 'pointer'}} onClick={Click}>PRODUTOS</ListItem>
         </List>
     )
 }

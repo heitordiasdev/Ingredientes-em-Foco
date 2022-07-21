@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import TextField from '@mui/material/TextField';
-import { Button, Card, CardContent, Grid, Typography, Alert, styled, Box} from '@mui/material';
+import { Button, Card, CardContent, Grid, Typography, Alert, styled, Box, Link} from '@mui/material';
 import Login from '../../assets/Register.png';
 import { AuthContext } from '../../contexts/AuthContext';
 
@@ -82,7 +82,17 @@ export default function FormLogin() {
                 </Typography>
               </Grid>
               <Grid xs={12} item>
-                <Button size='large' type='button' variant='contained' color='success' onClick={handleLogin}> Login </Button>
+                <Button size='large' type='submit' variant='contained' color='success' sx={{marginBottom: '3%'}}> Login </Button>
+      
+              </Grid>
+              <Grid xs={12}>
+              <Typography variant='h8' sx={{margin: 'auto',marginRight: '1%',color: 'white'}}>
+                  Não possuí cadastro?
+              </Typography>
+              <Link onClick={ClickRegister} underline="hover" sx={{cursor: 'pointer', color: '#228B22', fontWeight: 'bold'}}>
+                Crie uma conta
+              </Link>
+              
               </Grid>
             </Grid>
           </form>
@@ -98,18 +108,6 @@ export default function FormLogin() {
         </Box>
       )}
 
-      <Box>
-      <Typography variant='h5' sx={{color: 'white', paddingTop: '590px', marginLeft: '800px'}}>
-          Ainda não possui uma conta?
-        </Typography>
-      <Typography variant='h7' sx={{color: 'black', marginLeft: '800px'}}>
-          Clique aqui para cadastrar!
-      </Typography>
-      <Grid>
-      <Button size='large' variant='contained' color='success' sx={{margin: 'auto', marginLeft: '850px', marginTop: '20px',
-      backgroundColor: '#388e3c', '&:hover': {backgroundColor: '#2e7d32',},}} onClick={ClickRegister}> Cadastre-se </Button>
-      </Grid>
-      </Box>
     </StyledBox>
   );
 };
