@@ -19,7 +19,7 @@ export default function HomeProducts() {
   },[]);
 
   const Click = () => {
-    navigate('/home-admin')
+    navigate('/login')
   }
 
     return(
