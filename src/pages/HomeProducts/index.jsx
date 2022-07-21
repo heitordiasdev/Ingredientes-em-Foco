@@ -3,6 +3,7 @@ import { foodAll } from '../../services/foodService';
 import { Box, Typography, Button } from '@mui/material';
 import { CardFood } from '../../components/CardFood';
 import FilterFood from '../../components/FilterFood';
+import HeaderGlobal from '../../components/HeaderGlobal';
 
 export default function HomeProducts() {
   const [food, setFood] = useState([]);
@@ -17,6 +18,7 @@ export default function HomeProducts() {
 
     return(
       <>
+      <HeaderGlobal></HeaderGlobal>
       <Box sx={{display: 'flex', overflow: 'auto', backgroundColor:'#0000001C'}}>
         <Box sx={{width:'20%', alignSelf: 'start', p:5}}>
           <FilterFood to1={'/home-products-filter-ingredient'} to2={'/home-products-no-ingredient'} to3={'/home-products'}/>

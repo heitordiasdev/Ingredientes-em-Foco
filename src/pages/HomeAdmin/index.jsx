@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import MenuLateral from '../../components/MenuLateral';
 import { foodAll } from '../../services/foodService';
 import Food from '../../assets/Food.png';
+import HeaderGlobal from '../../components/HeaderGlobal';
 
 
 export default function HomeAdmin() {
@@ -19,6 +20,8 @@ export default function HomeAdmin() {
 
 
     return (
+  <>
+    <HeaderGlobal></HeaderGlobal>
     <Box sx={{display: 'flex', overflow: 'auto', height: '74vh'}}>
         <Box sx={{width:'20%', alignSelf: 'center', p:5}}>
           <List>
@@ -66,5 +69,6 @@ export default function HomeAdmin() {
  </Container>
       </Box>
     </Box>
+  </>
   );
 };

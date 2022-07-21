@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Typography, ImageList, Card, CardActionArea, Popover, CardContent, CardMedia, Button, Stack } from '@mui/material';
 
 import { foodAll } from '../../services/foodService';
+import HeaderGlobal from '../../components/HeaderGlobal';
 
 export default function HomeUser() {
 
@@ -30,7 +31,9 @@ export default function HomeUser() {
   const id = open ? 'simple-popover' : undefined;
 
   return (
+    
     <>
+    <HeaderGlobal></HeaderGlobal>
       <Box
         sx={{
           backgroundColor: '#E4E4E4',

@@ -2,12 +2,15 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { Outlet, useParams } from 'react-router-dom';
 import FilterFood from '../../components/FilterFood';
+import HeaderGlobal from '../../components/HeaderGlobal';
 
 
 export default function FilteredProduct() {
   const {product} = useParams();
 
     return(
+      <>
+      <HeaderGlobal></HeaderGlobal>
       <Box sx={{display: 'flex', overflow: 'auto', height: '74vh', backgroundColor:'#0000001C' }}>
         <Box sx={{width:'20%', alignSelf: 'center', p:3 }}>
           <FilterFood to1={'food-filter-ingredient'} to2={'food-filter-no-ingredient'} to3={`food-filter`} />
@@ -18,6 +21,7 @@ export default function FilteredProduct() {
         </Box>
         
       </Box>
+      </>
 
     )
 }

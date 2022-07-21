@@ -2,6 +2,7 @@ import { Box, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHea
 import React, { useEffect, useState } from 'react';
 import { usersAll } from '../../../services/userService';
 import MenuLateral from '../../../components/MenuLateral';
+import HeaderGlobal from '../../../components/HeaderGlobal';
 
 
 
@@ -20,7 +21,9 @@ export default function ProviderAdmin() {
     
 
     return (
-  
+    
+    <>
+    <HeaderGlobal></HeaderGlobal>
     <Box sx={{ display: 'flex', overflow: 'auto', height: '74vh'}}>
         <Box sx={{alignSelf: 'center', p:5}}>
         <List>
@@ -74,5 +77,6 @@ export default function ProviderAdmin() {
               </Paper>
       </Box>
     </Box>
+    </>
   );
 };
