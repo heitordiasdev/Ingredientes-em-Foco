@@ -16,11 +16,10 @@ const ListFoods = ({ foods, loading , setLoading}) => {
   const [openEdit, setOpenEdit] = useState(false);
   const [openConfirm, setOpenConfirm] = useState(false);
   const [deleteItem, setDeleteId] = useState('');
-  const [editedItem, setEditedItem] = useState({});
+  const [editedItem, setEditedItem] = useState(null);
   const [msg, setMessage] = useState('');
   
-  const editProdOpen = async (item) => {
-    console.log('Pra editar item',item)
+  const editProdOpen = (item) => {
     const info = item.infoNutritional.length>0?JSON.parse(item.infoNutritional):[]
     setEditedItem({id:item.id, name:item.name, manufacturer:item.manufacturer, ingredients:item.ingredients, infoNutritional:info })
     setOpenEdit(true);

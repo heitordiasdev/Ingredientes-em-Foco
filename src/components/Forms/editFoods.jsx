@@ -10,42 +10,29 @@ import { useState, useEffect } from 'react';
 import LoadFoods from '../../services/provider';
 
 
-function DialogEditProd(props) {
+function DialogEditProd({ open, setOpen, message, item }) {
 
-  // const [erows, setRows] = useState([ { name:'', quantity:'', vd:''}, ...item.infoNutritional]);
-  const [erows, setRows] = useState([
-    { name:'', quantity:'', vd:''}
-  ]);
-  const  { open, setOpen, message, item } = props;
   const [error, setError] = useState('')
   const [newName, setName] = useState('')
   const [newManufacture, setManufacture] = useState('')
   const [newIngredients, setIngredients] = useState('')
   const [newIngredientsCheck, setIngredientsCheck] = useState([])
+  const [erows, setRows] = useState([{ name:'', quantity:'', vd:''}]);
   
-  // useEffect(() => {
-  //   console.log('Props', props)
-  //   console.log('error', error)
-  //   console.log('newName', newName)
-  //   console.log('newManufacture', newManufacture)
-  //   console.log('newIngredients', newIngredients)
-  //   console.log('newIngredientsCheck', newIngredientsCheck)
-  //   setName(item.name)
-  //   setManufacture(item.manufacture)
-  //   setIngredients(item.ingredients)
-  //   setIngredientsCheck(item.ingredientsCheck)
-  //   setRows([...erows, { name:'', quantity:'', vd:''}])
-  // }, []);
-
   useEffect(() => {
-    console.log('item', props)
-    setName(item.name)
-    setManufacture(item.manufacturer)
-    setIngredients(item.ingredients)
-    setIngredientsCheck(item.ingredientsCheck)
-    setRows([...erows, { name:'', quantity:'', vd:''}])
-    // setRows([ ...item.infoNutritional.info, { name:'', quantity:'', vd:''}])
-  }, [open, setOpen, message, item])
+    if(item != null){
+      console.log('error', error)
+      console.log('newName', newName)
+      console.log('newManufacture', newManufacture)
+      console.log('newIngredients', newIngredients)
+      console.log('newIngredientsCheck', newIngredientsCheck)
+      setName(item.name)
+      setManufacture(item.manufacturer)
+      setIngredients(item.ingredients)
+      setIngredientsCheck(item.ingredientsCheck)
+      setRows([...item.infoNutritional])
+    }
+  }, [item]);
   
   const addRow = (index) => {
     setRows([...erows, { name:'', quantity:'', vd:''}])
@@ -108,7 +95,7 @@ function DialogEditProd(props) {
   ];
   
   return (
-    <Dialog open={open}>
+    <Dialog fullScreen open={open}>
       <DialogTitle>Editar Produto</DialogTitle>
       {error.length>0?(
         <DialogContentText onClick={()=>cleanError()} sx={{ color: '#E52928' ,alignSelf: 'center'}}>{error}</DialogContentText>
