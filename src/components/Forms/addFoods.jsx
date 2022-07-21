@@ -2,34 +2,38 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import DialogTitle from '@mui/material/DialogTitle';
-import IconButton from '@mui/material/IconButton';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogContent from '@mui/material/DialogContent';
-import { Box, Dialog } from '@mui/material';
-import { useState } from 'react';
-import LoadFoods from '../../services/provider';
+import { Box, Checkbox, Dialog } from '@mui/material';
+import { useState, useEffect } from 'react';
+import { newFood }from '../../services/foodService';
+// import LoadFoods from '../../services/provider';
+import InputLabel from '@mui/material/InputLabel';
 
 
 function DialogNewProd(props) {
 
   const { open, setOpen, message } = props;
-  const [ rows, setRows] = useState([
-    { name:'', quantity:'', vd:''}
-  ]);
+  const [rows, setRows] = useState([{ name:'', quantity:'', vd:''}]);
   const [error, setError] = useState('')
   const [newName, setName] = useState('')
   const [newManufacture, setManufacture] = useState('')
   const [newIngredients, setIngredients] = useState('')
-  
+  const [newIngredientsCheck, setIngredientsCheck] = useState('')
+
+
+  useEffect(() => {
+  }, [error, newName, newManufacture, newIngredients, newIngredientsCheck, rows ]);
+
   const addRow = (index) => {
     setRows([...rows, { name:'', quantity:'', vd:''}])
   }
 
   const changeFields = (index, event) => {
-      const data = [...rows];
-      data[index][event.target.name] = event.target.value;
-      setRows(data);
+    const data = [...rows];
+    data[index][event.target.name] = event.target.value;
+    setRows(data);
   }
 
   const changeName = (data) => {
@@ -44,23 +48,33 @@ function DialogNewProd(props) {
     setIngredients(data.target.value);
   }
 
+  const handleChangeIngredients = (data) => {
+    console.log('Check', data)
+    setIngredientsCheck(data.target.value)
+  }
+
   const cleanError = () => {
     setError('');
   }
 
   const saveProduct = async ()=> {
-    const product = { name:newName, manufacturer:newManufacture, ingredients:newIngredients, infoNutritional:JSON.stringify(rows)}
-    const saveFoodResp = await LoadFoods.Save(product);
+    const ingredients = newIngredients.concat('.', newIngredientsCheck)
+    console.log("ingredientes", ingredients)
+    console.log("new", newIngredients)
+    console.log("chec", newIngredientsCheck)
+    const product = { name:newName, manufacturer:newManufacture, ingredients:ingredients, infoNutritional:JSON.stringify(rows)}
+    const saveFoodResp = await newFood(product);
     console.log('Response',saveFoodResp)
     if(saveFoodResp.success){
-      message(saveFoodResp.message)
-      setOpen(false)
+      message(saveFoodResp.message, true)
+      closeDialog()
     } else {
-      setError(saveFoodResp.data)
+      setError(saveFoodResp.message)
     }
   }
 
   const closeDialog = () =>{
+    cleanError()
     setName('');
     setManufacture('');
     setIngredients('');
@@ -77,7 +91,7 @@ function DialogNewProd(props) {
   ];
   
   return (
-    <Dialog open={open}>
+    <Dialog fullScreen open={open}>
       <DialogTitle>Novo Produto</DialogTitle>
       {error.length>0?(
         <DialogContentText onClick={()=>cleanError()} sx={{ color: '#E52928' ,alignSelf: 'center'}}>{error}</DialogContentText>
@@ -91,7 +105,7 @@ function DialogNewProd(props) {
           type="text"
           value={newName}
           fullWidth
-          variant="standard"
+          variant="filled"
           onChange={event=>(changeName(event))}
         />
         <TextField
@@ -102,17 +116,36 @@ function DialogNewProd(props) {
           type="text"
           value={newManufacture}
           fullWidth
-          variant="standard"
+          variant="filled"
           onChange={event=>(changeManufacture(event))}
         />
+        <InputLabel><h3>Este produto contém/pode conter:</h3></InputLabel>
+        <InputLabel>Trigo, centeio, cevada, aveia e suas estirpes hibridizadas<Checkbox value=" Trigo, centeio, cevada, aveia e suas estirpes hibridizadas."  onChange={handleChangeIngredients} efaultChecked color="success" /></InputLabel>
+        <InputLabel>Crustáceos<Checkbox value=" Crustáceos."  onChange={handleChangeIngredients} efaultChecked color="success" /></InputLabel>
+        <InputLabel>Ovos<Checkbox value=" Ovos."  onChange={handleChangeIngredients} efaultChecked color="success" /></InputLabel>
+        <InputLabel>Peixes<Checkbox value=" Peixes."  onChange={handleChangeIngredients} efaultChecked color="success" /></InputLabel>
+        <InputLabel>Amendoim<Checkbox value=" Amendoim."  onChange={handleChangeIngredients} efaultChecked color="success" /></InputLabel>
+        <InputLabel>Soja<Checkbox value=" Soja."  onChange={handleChangeIngredients} efaultChecked color="success" /></InputLabel>
+        <InputLabel>Leites de todas as espécies de animais mamíferos ( Lactose )<Checkbox value=" Leites de todas as espécies de animais mamíferos ( Lactose )."  onChange={handleChangeIngredients} efaultChecked color="success" /></InputLabel>
+        <InputLabel>Amêndoa ( Prunus dulcis, sin.: Prunus amygdalus, Amygdalus communis L.)<Checkbox value=" Amêndoa ( Prunus dulcis, sin.: Prunus amygdalus, Amygdalus communis L.)."  onChange={handleChangeIngredients} efaultChecked color="success" /></InputLabel>
+        <InputLabel>Avelãs ( Corylus spp.)<Checkbox value=" Avelãs ( Corylus spp.)."  onChange={handleChangeIngredients} efaultChecked color="success" /></InputLabel>
+        <InputLabel>Castanha-de-caju ( Anacardium occidentale)<Checkbox value=" Castanha-de-caju ( Anacardium occidentale)."  onChange={handleChangeIngredients} efaultChecked color="success" /></InputLabel>
+        <InputLabel>Castanha-do-brasil ou castanha-do-pará ( Bertholletia excelsa)<Checkbox value=" Castanha-do-brasil ou castanha-do-pará ( Bertholletia excelsa)."  onChange={handleChangeIngredients} efaultChecked color="success" /></InputLabel>
+        <InputLabel>Macadâmias ( Macadamia spp.)<Checkbox value=" Macadâmias ( Macadamia spp.)."  onChange={handleChangeIngredients} efaultChecked color="success" lactose/></InputLabel>
+        <InputLabel>Nozes ( Juglans spp.)<Checkbox value=" Nozes ( Juglans spp.)"  onChange={handleChangeIngredients} efaultChecked color="success"  /></InputLabel>
+        <InputLabel>Pecãs ( Carya spp.)<Checkbox value=" Pecãs ( Carya spp.)"  onChange={handleChangeIngredients} efaultChecked color="success"  /></InputLabel>
+        <InputLabel>Pistaches ( Pistacia spp.)<Checkbox value=" Pistaches ( Pistacia spp.)"  onChange={handleChangeIngredients} efaultChecked color="success" /></InputLabel>
+        <InputLabel>Pinoli ( Pinus spp.)<Checkbox value=" Pinoli ( Pinus spp.)."  onChange={handleChangeIngredients} efaultChecked color="success"  /></InputLabel>
+        <InputLabel>Castanhas ( Castanea spp.)<Checkbox value=" Castanhas ( Castanea spp.)."  onChange={handleChangeIngredients} efaultChecked color="success"  /></InputLabel>
+        <InputLabel>Látex natural<Checkbox value=" Látex natural."  onChange={handleChangeIngredients} efaultChecked color="success" /></InputLabel>
         <TextField
           autoFocus
           margin="dense"
           id="ingredients"
-          label="Ingredientes"
+          label="Outros ingredientes"
           type="text"
           fullWidth
-          variant="standard"
+          variant="filled"
           value={newIngredients}
           onChange={event=>(changeIngredients(event))}
         />

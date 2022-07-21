@@ -4,6 +4,7 @@ import { filterIngredient } from '../../../services/foodService';
 import { Box, Typography, Button } from '@mui/material';
 import { CardFood } from '../../../components/CardFood';
 import FilterFood from '../../../components/FilterFood';
+import HeaderGlobal from '../../../components/Headerglobal';
 
 export default function FilterIngredient() {
     const {ingredient} = useParams();
@@ -19,6 +20,7 @@ export default function FilterIngredient() {
     
       return(
         <>
+        <HeaderGlobal></HeaderGlobal>
         <Box sx={{display: 'flex', overflow: 'auto', backgroundColor:'#0000001C'}}>
         <Box sx={{width:'20%', alignSelf: 'center', p:5}}>
           <FilterFood to1={'/home-products-filter-ingredient'} to2={'/home-products-no-ingredient'} to3={'/home-products'}/>

@@ -1,5 +1,6 @@
 import React from 'react';
-import {Container, ImageList, Card, CardContent, CardMedia, Typography, Popover, Button } from '@mui/material';
+import {Container, ImageList, Card, CardContent, CardMedia, Typography, Popover} from '@mui/material';
+import { StyledTypography, StyledButton } from './styled';
 
 export function CardFood({food}){
 
@@ -31,30 +32,22 @@ export function CardFood({food}){
                     <Typography gutterBottom variant="h5" component="div" sx={{ textAlign:'center'}}>
                         {item.name}
                     </Typography>
-                    <Typography sx={{ fontSize: 20, color: '#6E9440', fontWeight:'bolder', marginTop: '8px'}}>
+                    <StyledTypography>
                         Fabricante:
-                    </Typography>
+                    </StyledTypography>
                     <Typography sx={{ fontSize: 17}}>
                         {item.manufacturer}
                     </Typography>
-                    <Typography sx={{ fontSize: 20, color: '#6E9440', fontWeight:'bolder', marginTop: '8px'}}>
+                    <StyledTypography >
                         Ingredientes:
-                    </Typography>
+                    </StyledTypography>
                     <Typography sx={{ fontSize: 17}}>
                         {item.ingredients}
                     </Typography>
 
-                    <Button aria-describedby={id} variant="contained" onClick={handleClick} sx={{
-                      backgroundColor: '#6E9440',
-                      color: 'white',
-                      marginTop: '10px',
-                      '&:hover': {
-                        backgroundColor: '#2e7d32',
-                      },
-                      alignContent: 'end'
-                    }}>
+                    <StyledButton aria-describedby={id} variant="contained" onClick={handleClick}>
                       Info. Nutricionais
-                    </Button>
+                    </StyledButton>
                     <Popover
                       id={id}
                       open={open}
