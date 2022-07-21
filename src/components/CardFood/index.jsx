@@ -1,5 +1,4 @@
 import React from 'react';
-import Food from '../../assets/Food.png';
 import {Container, ImageList, Card, CardContent, CardMedia, Typography, Popover, Button } from '@mui/material';
 
 export function CardFood({food}){

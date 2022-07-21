@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, ImageList, Card, CardActionArea, Popover, CardContent, CardMedia, Button, Stack } from '@mui/material';
+import { useNavigate } from "react-router-dom";
 
 import { foodAll } from '../../services/foodService';
 
 export default function HomeUser() {
+
+  const navigate = useNavigate();
+
+  const ClickRegister = () => {
+    navigate('/register')
+  }
 
   const [food, setFood] = useState([]);
 
@@ -171,7 +178,8 @@ export default function HomeUser() {
               '&:hover': {
                 backgroundColor: '#2e7d32',
               },
-            }}>Cadastrar</Button>
+              
+            }} onClick={ClickRegister}>Cadastrar</Button>
           </Stack>
         </Box>
       </Box>
