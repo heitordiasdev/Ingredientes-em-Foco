@@ -16,9 +16,15 @@ const ListFoods = ({ foods, loading , setLoading}) => {
   const [openEdit, setOpenEdit] = useState(false);
   const [openConfirm, setOpenConfirm] = useState(false);
   const [deleteItem, setDeleteId] = useState('');
-  const [editedItem, setEditedItem] = useState({});
+  const [editedItem, setEditedItem] = useState(null);
   const [msg, setMessage] = useState('');
   
+  const editProdOpen = (item) => {
+    const info = item.infoNutritional.length>0?JSON.parse(item.infoNutritional):[]
+    setEditedItem({id:item.id, name:item.name, manufacturer:item.manufacturer, ingredients:JSON.parse(item.ingredients)['data'], infoNutritional:info , check:JSON.parse(item.ingredients)['check']})
+    setOpenEdit(true);
+  };
+
   const askDeleteProd = (id) => {
     setOpenConfirm(true);
     setDeleteId(id)
@@ -43,13 +49,6 @@ const ListFoods = ({ foods, loading , setLoading}) => {
     setOpen(true);
   };
 
-  const editProdOpen = async (item) => {
-    console.log('Pra editar item',item)
-    const info = item.infoNutritional.length>0?JSON.parse(item.infoNutritional):[]
-    setEditedItem({id:item.id, name:item.name, manufacturer:item.manufacturer, ingredients:item.ingredients, infoNutritional:info })
-    setOpenEdit(true);
-  };
-
   const showMessage = (message) => {
     console.log('message', message)
     setMessage(message)
@@ -67,13 +66,6 @@ const ListFoods = ({ foods, loading , setLoading}) => {
       <FormNewProd open={open} setOpen={setOpen} message={showMessage}/>
       <FormEditProd open={openEdit} setOpen={setOpenEdit} message={showMessage} item={editedItem}/>
       <ConfirmDialog open={openConfirm} setOpen={setOpenConfirm} confirm={deleteProd} ></ConfirmDialog>
-      <Box sx={{alignSelf: 'center', p:5}}>
-          <List>
-            <MenuLateral icon={'person'} label={'USUARIOS'} to={'/home-admin/user-admin'}/>
-            <MenuLateral icon={'storefront'} label={'FORNECEDORES'} to={'/provider'}/>
-            <MenuLateral icon={'restaurantmenu'} label={'PRODUTOS'} to={'/home-admin'}/>
-          </List>
-      </Box>
       <Box component="main" sx={{ flexGrow: 1, p: 3, backgroundColor:'#0000001C'}}>
         <Typography sx={{ fontSize: 40,  color: '#E52928', textAlign:'center', fontWeight:'bolder'}} >LISTA DE PRODUTOS</Typography>
         <Paper className sx={{ borderRadius: '37px', mt:'50px'}}>
@@ -102,7 +94,7 @@ const ListFoods = ({ foods, loading , setLoading}) => {
                         <TableRow key={row.id}>
                           <TableCell align="center">{row.id}</TableCell>
                           <TableCell component="th"  align="center" scope="row">{row.name}</TableCell>
-                          <TableCell component="th"  align="center" scope="row">{row.ingredients}, {JSON.parse(row.infoNutritional)['options']}</TableCell>
+                          <TableCell component="th"  align="center" scope="row">{JSON.parse(row.ingredients)['data']}, {JSON.parse(row.ingredients)['check']}</TableCell>
                           <TableCell component="th"  align="center" scope="row"><ModeEditIcon onClick={()=>editProdOpen(row)}></ModeEditIcon> <DeleteIcon onClick={()=>askDeleteProd(row.id)} /></TableCell>
                         </TableRow>
                         ))}

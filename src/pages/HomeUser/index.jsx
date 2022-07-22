@@ -49,6 +49,7 @@ export default function HomeUser() {
               '&:hover': {
                 backgroundColor: '#2e7d32',
               },
+              
             }}>Cadastrar</Button>
           </Stack>
         </Box>

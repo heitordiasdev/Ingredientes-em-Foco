@@ -3,7 +3,7 @@ import ItemsCarousel from 'react-items-carousel';
 import { Paper, Button } from '@mui/material';
 import FilterOvo from './../../assets/FilterOvo.png';
 import FilterLactose from './../../assets/FilterLactose.png';
-import FilterCamarao from './../../assets/FilterCamarao.png'
+import FilterCamarao from './../../assets/FilterCamarao.jpg'
 import FilterGluten from './../../assets/FilterGluten.png';
 import FilterAmendoim from './../../assets/FilterAmendoim.png';
 import Box from '@mui/material/Box';

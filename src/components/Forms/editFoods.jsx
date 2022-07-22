@@ -5,47 +5,31 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogContent from '@mui/material/DialogContent';
-import { Box, Dialog } from '@mui/material';
+import { Box, Dialog, Checkbox } from '@mui/material';
 import { useState, useEffect } from 'react';
-import LoadFoods from '../../services/provider';
+import { updateFood }from '../../services/foodService';
+import InputLabel from '@mui/material/InputLabel';
+// import LoadFoods from '../../services/provider';
 
 
-function DialogEditProd(props) {
+function DialogEditProd({ open, setOpen, message, item }) {
 
-  // const [erows, setRows] = useState([ { name:'', quantity:'', vd:''}, ...item.infoNutritional]);
-  const [erows, setRows] = useState([
-    { name:'', quantity:'', vd:''}
-  ]);
-  const  { open, setOpen, message, item } = props;
   const [error, setError] = useState('')
   const [newName, setName] = useState('')
   const [newManufacture, setManufacture] = useState('')
   const [newIngredients, setIngredients] = useState('')
   const [newIngredientsCheck, setIngredientsCheck] = useState([])
-  
-  // useEffect(() => {
-  //   console.log('Props', props)
-  //   console.log('error', error)
-  //   console.log('newName', newName)
-  //   console.log('newManufacture', newManufacture)
-  //   console.log('newIngredients', newIngredients)
-  //   console.log('newIngredientsCheck', newIngredientsCheck)
-  //   setName(item.name)
-  //   setManufacture(item.manufacture)
-  //   setIngredients(item.ingredients)
-  //   setIngredientsCheck(item.ingredientsCheck)
-  //   setRows([...erows, { name:'', quantity:'', vd:''}])
-  // }, []);
+  const [erows, setRows] = useState([{ name:'', quantity:'', vd:''}]);
 
   useEffect(() => {
-    console.log('item', props)
-    setName(item.name)
-    setManufacture(item.manufacturer)
-    setIngredients(item.ingredients)
-    setIngredientsCheck(item.ingredientsCheck)
-    setRows([...erows, { name:'', quantity:'', vd:''}])
-    // setRows([ ...item.infoNutritional.info, { name:'', quantity:'', vd:''}])
-  }, [open, setOpen, message, item])
+    if(item != null){
+      setName(item.name)
+      setManufacture(item.manufacturer)
+      setIngredients(item.ingredients)
+      setIngredientsCheck([])
+      setRows([...item.infoNutritional])
+    }
+  }, [item]);
   
   const addRow = (index) => {
     setRows([...erows, { name:'', quantity:'', vd:''}])
@@ -74,14 +58,21 @@ function DialogEditProd(props) {
   }
 
   const handleChangeIngredients = (data) => {
-    console.log('Check', data)
-    setIngredientsCheck(data.target.value)
+    if(data.target.checked){
+      setIngredientsCheck([...newIngredientsCheck, data.target.value])
+    }else {
+      const index = newIngredientsCheck.indexOf(data.target.value);
+      if (index > -1) {
+        newIngredientsCheck.splice(index, 1);
+      }
+    }
   }
+  
 
   const updateProduct = async ()=> {
-    console.log('item edit',item)
-    const product = { name:newName, manufacturer:newManufacture, ingredients:newIngredients, infoNutritional:JSON.stringify(erows)}
-    const saveFoodResp = await LoadFoods.Update(product, item.id);
+    let ingredients = { data:newIngredients, check:newIngredientsCheck} 
+    const product = { name:newName, manufacturer:newManufacture, ingredients:JSON.stringify(ingredients), infoNutritional:JSON.stringify(erows)}
+    const saveFoodResp = await updateFood(product, item.id);
     console.log('Response',saveFoodResp)
     if(saveFoodResp.success){
       message(saveFoodResp.message)
@@ -108,7 +99,7 @@ function DialogEditProd(props) {
   ];
   
   return (
-    <Dialog open={open}>
+    <Dialog fullScreen open={open}>
       <DialogTitle>Editar Produto</DialogTitle>
       {error.length>0?(
         <DialogContentText onClick={()=>cleanError()} sx={{ color: '#E52928' ,alignSelf: 'center'}}>{error}</DialogContentText>
@@ -147,6 +138,26 @@ function DialogEditProd(props) {
           value={newIngredients}
           onChange={event=>(changeIngredients(event))}
         />
+        <InputLabel><h3>Este produto contém/pode conter:</h3></InputLabel>
+        <InputLabel>Trigo, centeio, cevada, aveia e suas estirpes hibridizadas<Checkbox value=" Trigo, centeio, cevada, aveia e suas estirpes hibridizadas."  onChange={handleChangeIngredients} color="success" /></InputLabel>
+        <InputLabel>Crustáceos<Checkbox value=" Crustáceos."  onChange={handleChangeIngredients} color="success" /></InputLabel>
+        <InputLabel>Ovos<Checkbox value=" Ovos."  onChange={handleChangeIngredients} color="success" /></InputLabel>
+        <InputLabel>Peixes<Checkbox value=" Peixes."  onChange={handleChangeIngredients} color="success" /></InputLabel>
+        <InputLabel>Amendoim<Checkbox value=" Amendoim."  onChange={handleChangeIngredients} color="success" /></InputLabel>
+        <InputLabel>Soja<Checkbox value=" Soja."  onChange={handleChangeIngredients} color="success" /></InputLabel>
+        <InputLabel>Leites de todas as espécies de animais mamíferos ( Lactose )<Checkbox value=" Leites de todas as espécies de animais mamíferos ( Lactose )."  onChange={handleChangeIngredients} color="success" /></InputLabel>
+        <InputLabel>Amêndoa ( Prunus dulcis, sin.: Prunus amygdalus, Amygdalus communis L.)<Checkbox value=" Amêndoa ( Prunus dulcis, sin.: Prunus amygdalus, Amygdalus communis L.)."  onChange={handleChangeIngredients} color="success" /></InputLabel>
+        <InputLabel>Avelãs ( Corylus spp.)<Checkbox value=" Avelãs ( Corylus spp.)."  onChange={handleChangeIngredients} color="success" /></InputLabel>
+        <InputLabel>Castanha-de-caju ( Anacardium occidentale)<Checkbox value=" Castanha-de-caju ( Anacardium occidentale)."  onChange={handleChangeIngredients} color="success" /></InputLabel>
+        <InputLabel>Castanha-do-brasil ou castanha-do-pará ( Bertholletia excelsa)<Checkbox value=" Castanha-do-brasil ou castanha-do-pará ( Bertholletia excelsa)."  onChange={handleChangeIngredients} color="success" /></InputLabel>
+        <InputLabel>Macadâmias ( Macadamia spp.)<Checkbox value=" Macadâmias ( Macadamia spp.)."  onChange={handleChangeIngredients} color="success" lactose/></InputLabel>
+        <InputLabel>Nozes ( Juglans spp.)<Checkbox value=" Nozes ( Juglans spp.)"  onChange={handleChangeIngredients} color="success"  /></InputLabel>
+        <InputLabel>Pecãs ( Carya spp.)<Checkbox value=" Pecãs ( Carya spp.)"  onChange={handleChangeIngredients} color="success"  /></InputLabel>
+        <InputLabel>Pistaches ( Pistacia spp.)<Checkbox value=" Pistaches ( Pistacia spp.)"  onChange={handleChangeIngredients} color="success" /></InputLabel>
+        <InputLabel>Pinoli ( Pinus spp.)<Checkbox value=" Pinoli ( Pinus spp.)."  onChange={handleChangeIngredients} color="success"  /></InputLabel>
+        <InputLabel>Castanhas ( Castanea spp.)<Checkbox value=" Castanhas ( Castanea spp.)."  onChange={handleChangeIngredients} color="success"  /></InputLabel>
+        <InputLabel>Látex natural<Checkbox value=" Látex natural."  onChange={handleChangeIngredients} color="success" /></InputLabel>
+
         <Box sx={{ height: 400, width: '100%' }}>
           <table>
             <thead>
@@ -215,3 +226,4 @@ function DialogEditProd(props) {
 }
 
 export default DialogEditProd 
+
