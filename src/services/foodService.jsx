@@ -24,6 +24,15 @@ export const deleteFood = async (id) => {
   }
 };
 
+export const updateFood = async (prod, id) => {
+  try {
+    const food = await api.put("/food/".concat(id), prod);
+    return {success:true, data:food.data, message:'Produto atualizado com sucesso!'};
+  } catch (error) {
+    return {success:false, data:null, message:'Não foi possivel atualizar o produto'};
+  }
+};
+
 export const filterIngredient = async (ingredient) => {
   const food = await api.get(`/food/filterContainIngredient/${ingredient}`).then(response =>response.data).catch(err => err);
   return food;

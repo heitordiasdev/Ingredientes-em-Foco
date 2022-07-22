@@ -20,7 +20,7 @@ function DialogNewProd(props) {
   const [newName, setName] = useState('')
   const [newManufacture, setManufacture] = useState('')
   const [newIngredients, setIngredients] = useState('')
-  const [newIngredientsCheck, setIngredientsCheck] = useState('')
+  const [newIngredientsCheck, setIngredientsCheck] = useState([])
 
   const addRow = (index) => {
     setRows([...rows, { name:'', quantity:'', vd:''}])
@@ -45,8 +45,14 @@ function DialogNewProd(props) {
   }
 
   const handleChangeIngredients = (data) => {
-    console.log('Check', data)
-    setIngredientsCheck(data.target.value)
+    if(data.target.checked){
+      setIngredientsCheck([...newIngredientsCheck, data.target.value])
+    }else {
+      const index = newIngredientsCheck.indexOf(data.target.value);
+      if (index > -1) {
+        newIngredientsCheck.splice(index, 1);
+      }
+    }
   }
 
   const cleanError = () => {
@@ -54,11 +60,11 @@ function DialogNewProd(props) {
   }
 
   const saveProduct = async ()=> {
-    const ingredients = newIngredients.concat('.', newIngredientsCheck)
+    let ingredients = { data:newIngredients, check:newIngredientsCheck} 
     console.log("ingredientes", ingredients)
     console.log("new", newIngredients)
     console.log("chec", newIngredientsCheck)
-    const product = { name:newName, manufacturer:newManufacture, ingredients:ingredients, infoNutritional:JSON.stringify(rows)}
+    const product = { name:newName, manufacturer:newManufacture, ingredients:JSON.stringify(ingredients), infoNutritional:JSON.stringify(rows)}
     const saveFoodResp = await newFood(product);
     console.log('Response',saveFoodResp)
     if(saveFoodResp.success){
@@ -116,24 +122,24 @@ function DialogNewProd(props) {
           onChange={event=>(changeManufacture(event))}
         />
         <InputLabel><h3>Este produto contém/pode conter:</h3></InputLabel>
-        <InputLabel>Trigo, centeio, cevada, aveia e suas estirpes hibridizadas<Checkbox value=" Trigo, centeio, cevada, aveia e suas estirpes hibridizadas."  onChange={handleChangeIngredients} efaultChecked color="success" /></InputLabel>
-        <InputLabel>Crustáceos<Checkbox value=" Crustáceos."  onChange={handleChangeIngredients} efaultChecked color="success" /></InputLabel>
-        <InputLabel>Ovos<Checkbox value=" Ovos."  onChange={handleChangeIngredients} efaultChecked color="success" /></InputLabel>
-        <InputLabel>Peixes<Checkbox value=" Peixes."  onChange={handleChangeIngredients} efaultChecked color="success" /></InputLabel>
-        <InputLabel>Amendoim<Checkbox value=" Amendoim."  onChange={handleChangeIngredients} efaultChecked color="success" /></InputLabel>
-        <InputLabel>Soja<Checkbox value=" Soja."  onChange={handleChangeIngredients} efaultChecked color="success" /></InputLabel>
-        <InputLabel>Leites de todas as espécies de animais mamíferos ( Lactose )<Checkbox value=" Leites de todas as espécies de animais mamíferos ( Lactose )."  onChange={handleChangeIngredients} efaultChecked color="success" /></InputLabel>
-        <InputLabel>Amêndoa ( Prunus dulcis, sin.: Prunus amygdalus, Amygdalus communis L.)<Checkbox value=" Amêndoa ( Prunus dulcis, sin.: Prunus amygdalus, Amygdalus communis L.)."  onChange={handleChangeIngredients} efaultChecked color="success" /></InputLabel>
-        <InputLabel>Avelãs ( Corylus spp.)<Checkbox value=" Avelãs ( Corylus spp.)."  onChange={handleChangeIngredients} efaultChecked color="success" /></InputLabel>
-        <InputLabel>Castanha-de-caju ( Anacardium occidentale)<Checkbox value=" Castanha-de-caju ( Anacardium occidentale)."  onChange={handleChangeIngredients} efaultChecked color="success" /></InputLabel>
-        <InputLabel>Castanha-do-brasil ou castanha-do-pará ( Bertholletia excelsa)<Checkbox value=" Castanha-do-brasil ou castanha-do-pará ( Bertholletia excelsa)."  onChange={handleChangeIngredients} efaultChecked color="success" /></InputLabel>
-        <InputLabel>Macadâmias ( Macadamia spp.)<Checkbox value=" Macadâmias ( Macadamia spp.)."  onChange={handleChangeIngredients} efaultChecked color="success" lactose/></InputLabel>
-        <InputLabel>Nozes ( Juglans spp.)<Checkbox value=" Nozes ( Juglans spp.)"  onChange={handleChangeIngredients} efaultChecked color="success"  /></InputLabel>
-        <InputLabel>Pecãs ( Carya spp.)<Checkbox value=" Pecãs ( Carya spp.)"  onChange={handleChangeIngredients} efaultChecked color="success"  /></InputLabel>
-        <InputLabel>Pistaches ( Pistacia spp.)<Checkbox value=" Pistaches ( Pistacia spp.)"  onChange={handleChangeIngredients} efaultChecked color="success" /></InputLabel>
-        <InputLabel>Pinoli ( Pinus spp.)<Checkbox value=" Pinoli ( Pinus spp.)."  onChange={handleChangeIngredients} efaultChecked color="success"  /></InputLabel>
-        <InputLabel>Castanhas ( Castanea spp.)<Checkbox value=" Castanhas ( Castanea spp.)."  onChange={handleChangeIngredients} efaultChecked color="success"  /></InputLabel>
-        <InputLabel>Látex natural<Checkbox value=" Látex natural."  onChange={handleChangeIngredients} efaultChecked color="success" /></InputLabel>
+        <InputLabel>Trigo, centeio, cevada, aveia e suas estirpes hibridizadas<Checkbox value=" Trigo, centeio, cevada, aveia e suas estirpes hibridizadas."  onChange={handleChangeIngredients} color="success" /></InputLabel>
+        <InputLabel>Crustáceos<Checkbox value=" Crustáceos."  onChange={handleChangeIngredients} color="success" /></InputLabel>
+        <InputLabel>Ovos<Checkbox value=" Ovos."  onChange={handleChangeIngredients} color="success" /></InputLabel>
+        <InputLabel>Peixes<Checkbox value=" Peixes."  onChange={handleChangeIngredients} color="success" /></InputLabel>
+        <InputLabel>Amendoim<Checkbox value=" Amendoim."  onChange={handleChangeIngredients} color="success" /></InputLabel>
+        <InputLabel>Soja<Checkbox value=" Soja."  onChange={handleChangeIngredients} color="success" /></InputLabel>
+        <InputLabel>Leites de todas as espécies de animais mamíferos ( Lactose )<Checkbox value=" Leites de todas as espécies de animais mamíferos ( Lactose )."  onChange={handleChangeIngredients} color="success" /></InputLabel>
+        <InputLabel>Amêndoa ( Prunus dulcis, sin.: Prunus amygdalus, Amygdalus communis L.)<Checkbox value=" Amêndoa ( Prunus dulcis, sin.: Prunus amygdalus, Amygdalus communis L.)."  onChange={handleChangeIngredients} color="success" /></InputLabel>
+        <InputLabel>Avelãs ( Corylus spp.)<Checkbox value=" Avelãs ( Corylus spp.)."  onChange={handleChangeIngredients} color="success" /></InputLabel>
+        <InputLabel>Castanha-de-caju ( Anacardium occidentale)<Checkbox value=" Castanha-de-caju ( Anacardium occidentale)."  onChange={handleChangeIngredients} color="success" /></InputLabel>
+        <InputLabel>Castanha-do-brasil ou castanha-do-pará ( Bertholletia excelsa)<Checkbox value=" Castanha-do-brasil ou castanha-do-pará ( Bertholletia excelsa)."  onChange={handleChangeIngredients} color="success" /></InputLabel>
+        <InputLabel>Macadâmias ( Macadamia spp.)<Checkbox value=" Macadâmias ( Macadamia spp.)."  onChange={handleChangeIngredients} color="success" lactose/></InputLabel>
+        <InputLabel>Nozes ( Juglans spp.)<Checkbox value=" Nozes ( Juglans spp.)"  onChange={handleChangeIngredients} color="success"  /></InputLabel>
+        <InputLabel>Pecãs ( Carya spp.)<Checkbox value=" Pecãs ( Carya spp.)"  onChange={handleChangeIngredients} color="success"  /></InputLabel>
+        <InputLabel>Pistaches ( Pistacia spp.)<Checkbox value=" Pistaches ( Pistacia spp.)"  onChange={handleChangeIngredients} color="success" /></InputLabel>
+        <InputLabel>Pinoli ( Pinus spp.)<Checkbox value=" Pinoli ( Pinus spp.)."  onChange={handleChangeIngredients} color="success"  /></InputLabel>
+        <InputLabel>Castanhas ( Castanea spp.)<Checkbox value=" Castanhas ( Castanea spp.)."  onChange={handleChangeIngredients} color="success"  /></InputLabel>
+        <InputLabel>Látex natural<Checkbox value=" Látex natural."  onChange={handleChangeIngredients} color="success" /></InputLabel>
         <TextField
           autoFocus
           margin="dense"

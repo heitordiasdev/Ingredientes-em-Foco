@@ -21,7 +21,7 @@ const ListFoods = ({ foods, loading , setLoading}) => {
   
   const editProdOpen = (item) => {
     const info = item.infoNutritional.length>0?JSON.parse(item.infoNutritional):[]
-    setEditedItem({id:item.id, name:item.name, manufacturer:item.manufacturer, ingredients:item.ingredients, infoNutritional:info })
+    setEditedItem({id:item.id, name:item.name, manufacturer:item.manufacturer, ingredients:JSON.parse(item.ingredients)['data'], infoNutritional:info , check:JSON.parse(item.ingredients)['check']})
     setOpenEdit(true);
   };
 
@@ -95,7 +95,7 @@ const ListFoods = ({ foods, loading , setLoading}) => {
                         <TableRow key={row.id}>
                           <TableCell align="center">{row.id}</TableCell>
                           <TableCell component="th"  align="center" scope="row">{row.name}</TableCell>
-                          <TableCell component="th"  align="center" scope="row">{row.ingredients}, {JSON.parse(row.infoNutritional)['options']}</TableCell>
+                          <TableCell component="th"  align="center" scope="row">{JSON.parse(row.ingredients)['data']}, {JSON.parse(row.ingredients)['check']}</TableCell>
                           <TableCell component="th"  align="center" scope="row"><ModeEditIcon onClick={()=>editProdOpen(row)}></ModeEditIcon> <DeleteIcon onClick={()=>askDeleteProd(row.id)} /></TableCell>
                         </TableRow>
                         ))}
