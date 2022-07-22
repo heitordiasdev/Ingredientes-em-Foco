@@ -16,9 +16,15 @@ const ListFoods = ({ foods, loading , setLoading}) => {
   const [openEdit, setOpenEdit] = useState(false);
   const [openConfirm, setOpenConfirm] = useState(false);
   const [deleteItem, setDeleteId] = useState('');
-  const [editedItem, setEditedItem] = useState({});
+  const [editedItem, setEditedItem] = useState(null);
   const [msg, setMessage] = useState('');
   
+  const editProdOpen = (item) => {
+    const info = item.infoNutritional.length>0?JSON.parse(item.infoNutritional):[]
+    setEditedItem({id:item.id, name:item.name, manufacturer:item.manufacturer, ingredients:JSON.parse(item.ingredients)['data'], infoNutritional:info , check:JSON.parse(item.ingredients)['check']})
+    setOpenEdit(true);
+  };
+
   const askDeleteProd = (id) => {
     setOpenConfirm(true);
     setDeleteId(id)
@@ -41,13 +47,6 @@ const ListFoods = ({ foods, loading , setLoading}) => {
 
   const handleClickOpen = () => {
     setOpen(true);
-  };
-
-  const editProdOpen = async (item) => {
-    console.log('Pra editar item',item)
-    const info = item.infoNutritional.length>0?JSON.parse(item.infoNutritional):[]
-    setEditedItem({id:item.id, name:item.name, manufacturer:item.manufacturer, ingredients:item.ingredients, infoNutritional:info })
-    setOpenEdit(true);
   };
 
   const showMessage = (message) => {
@@ -95,7 +94,7 @@ const ListFoods = ({ foods, loading , setLoading}) => {
                         <TableRow key={row.id}>
                           <TableCell align="center">{row.id}</TableCell>
                           <TableCell component="th"  align="center" scope="row">{row.name}</TableCell>
-                          <TableCell component="th"  align="center" scope="row">{row.ingredients}, {JSON.parse(row.infoNutritional)['options']}</TableCell>
+                          <TableCell component="th"  align="center" scope="row">{JSON.parse(row.ingredients)['data']}, {JSON.parse(row.ingredients)['check']}</TableCell>
                           <TableCell component="th"  align="center" scope="row"><ModeEditIcon onClick={()=>editProdOpen(row)}></ModeEditIcon> <DeleteIcon onClick={()=>askDeleteProd(row.id)} /></TableCell>
                         </TableRow>
                         ))}

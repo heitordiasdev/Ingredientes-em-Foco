@@ -42,7 +42,7 @@ export function CardFood({food}){
                         Ingredientes:
                     </StyledTypography>
                     <Typography sx={{ fontSize: 17}}>
-                        {item.ingredients}
+                        {JSON.parse(item.ingredients)['data']}, {JSON.parse(item.ingredients)['check']}
                     </Typography>
 
                     <StyledButton aria-describedby={id} variant="contained" onClick={handleClick}>
@@ -58,7 +58,11 @@ export function CardFood({food}){
                         horizontal: 'left',
                       }}
                     >
-                      <Typography sx={{ p: 2, maxWidth: '350px' }}>{item.infoNutritional}</Typography>
+                      <Typography sx={{ p: 2, maxWidth: '350px' }}>
+                         {JSON.parse(item.infoNutritional).map(( row, index)=>(
+                            <spam>{row.name} - {row.quantity} (qtd) - {row.vd} (vd%) </spam>
+                          ))} 
+                          </Typography>
                     </Popover>
                  </CardContent>
                 </Card>
