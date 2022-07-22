@@ -1,18 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
 import TextField from '@mui/material/TextField';
-import { Button, Card, CardContent, Grid, Typography, Alert, styled, Box } from '@mui/material';
-import { createUser } from '../../service/userRegister';
-import Register from '../../assets/Register.png';
-
-
-const StyledBox = styled(Box)(
-  {
-    backgroundImage: `url(${Register})`,
-    backgroundSize: 'cover',
-    height: '80vh',
-  }
-);
+import { Button, CardContent, Grid, Typography, Alert, Box } from '@mui/material';
+import { createUser } from '../../services/userService';
+import { StyledBox, StyledCard } from './styled';
 
 export default function FormRegister() {
 
@@ -39,19 +30,7 @@ export default function FormRegister() {
           Crie sua conta agora mesmo!
         </Typography>
       </Typography>
-      <Card sx={{
-        border: 1,
-        textAlign: 'center',
-        float: 'right',
-        marginRight: '10%',
-        marginTop: '8%',
-        width: '35%',
-        background: 'transparent',
-        borderRadius: '10px',
-        borderColor: 'white'
-      }}
-        variant='elevation'>
-
+      <StyledCard  variant='elevation'>
         <Typography variant='h3' sx={{ color: 'white', width: '30%', marginLeft: '35%', borderRadius: '15px', fontSize: 30, fontWeight: 'bold' }}>
           Cadastre-se
         </Typography>
@@ -73,7 +52,6 @@ export default function FormRegister() {
               <Grid xs={12} sm={6} item>
                 <TextField sx={{ backgroundColor: 'white' }} type='password' label='Senha' required placeholder='Digite sua Senha' variant='outlined' fullWidth 
                 onChange={(event) => setPassword(event.target.value)} />
-
               </Grid>
               <Grid xs={12} sm={6} item>
                 <TextField sx={{ backgroundColor: 'white' }} type='password' label='Confirmar Senha' required placeholder='Digite sua senha novamente' variant='outlined' fullWidth onChange={(event) => setPasswordConfirm(event.target.value)} />
@@ -106,7 +84,7 @@ export default function FormRegister() {
           </form>
         </CardContent>
 
-      </Card>
+      </StyledCard>
 
       {alert && (
         <Box sx={{ float: 'right', padding: '1em', marginTop: '600px', marginRight: '-500px' }}>

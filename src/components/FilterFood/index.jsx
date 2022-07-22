@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Stack, Typography, InputBase, IconButton, Box, FormControl, InputLabel, Select, MenuItem, Paper } from '@mui/material';
+import { Stack, Typography, InputBase, IconButton, Box, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
+import { StyledTypography, StyledPaper } from './styled';
 
 export default function FilterFood({to1 ,to2 , to3}){
     const[text, setText] = useState('');
     const navigate = useNavigate();
     const [age, setAge] = React.useState('30');
-
 
     const handleClick = () => {
         if(age === 10){
@@ -27,11 +27,8 @@ export default function FilterFood({to1 ,to2 , to3}){
 
     return(
         <Box>
-            <Typography sx={{ fontSize: 25,  color: '#453F38', textAlign:'center', fontWeight:'bolder'}} >Filtrar por ingredientes: </Typography>
-            <Paper
-                component="form"
-                sx={{ p: '2px 4px',margin:'10px' , display: 'flex', alignItems: 'center', width: '100%', borderRadius: '37px' }}
-            >
+            <StyledTypography >Filtrar por ingredientes: </StyledTypography>
+            <StyledPaper component="form">
                 <InputBase
                     sx={{ ml: 1, flex: 1}}
                     placeholder=" Pesquise um produto"
@@ -42,7 +39,7 @@ export default function FilterFood({to1 ,to2 , to3}){
                 <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={handleClick}>
                 <SearchIcon sx={{color:'#747374'}} />
                 </IconButton>
-            </Paper>
+            </StyledPaper>
          
         <Stack direction="row" spacing={2} sx={{margin:'10px', alignItems: 'center'}}>
         <Typography sx={{ fontSize: 20,  color: '#453F38'}} >Ordenar por: </Typography>

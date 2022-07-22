@@ -41,12 +41,6 @@ const ListFoods = ({ foods, loading , setLoading}) => {
     setOpen(false);
   };
 
-  const showMessage = (message, refrech) => {
-    console.log('message refresh', refrech)
-    setMessage(message)
-    setLoading()
-  };
-
   useEffect(() => {
     console.log('edited hook', editedItem)
   }, [editedItem])
@@ -55,18 +49,23 @@ const ListFoods = ({ foods, loading , setLoading}) => {
     setOpen(true);
   };
 
+  const showMessage = (message) => {
+    console.log('message', message)
+    setMessage(message)
+    setLoading()
+  };
+
+  useEffect(() => {
+    console.log('edited hook', editedItem)
+  }, [editedItem])
+
+
+
   return (
     <Box sx={{display: 'flex', flexDirection:'row', minHeight:'79vh'}}>
       <FormNewProd open={open} setOpen={setOpen} message={showMessage}/>
       <FormEditProd open={openEdit} setOpen={setOpenEdit} message={showMessage} item={editedItem}/>
       <ConfirmDialog open={openConfirm} setOpen={setOpenConfirm} confirm={deleteProd} ></ConfirmDialog>
-      <Box sx={{alignSelf: 'center', p:5}}>
-          <List>
-            <MenuLateral icon={'person'} label={'USUARIOS'} to={'/home-admin/user-admin'}/>
-            <MenuLateral icon={'storefront'} label={'FORNECEDORES'} to={'/provider'}/>
-            <MenuLateral icon={'restaurantmenu'} label={'PRODUTOS'} to={'/home-admin'}/>
-          </List>
-      </Box>
       <Box component="main" sx={{ flexGrow: 1, p: 3, backgroundColor:'#0000001C'}}>
         <Typography sx={{ fontSize: 40,  color: '#E52928', textAlign:'center', fontWeight:'bolder'}} >LISTA DE PRODUTOS</Typography>
         <Paper className sx={{ borderRadius: '37px', mt:'50px'}}>
