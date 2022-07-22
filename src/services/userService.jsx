@@ -10,6 +10,11 @@ export const userId = async (id) => {
     return user
 }
 
+export const deleteUser= async (id) => {
+    const user = await api.delete(`/user/${id}`).then(response => response.data).catch(err => err);
+    return user
+}
+
 export const loginUser = async (email, password) => {
     const user = await api.post("/user/authenticate", {email, password}).then(response => response.data).catch(err => err);
     return user;
