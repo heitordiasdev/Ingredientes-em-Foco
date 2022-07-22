@@ -40,8 +40,8 @@ export default function FormLogin() {
           Entre na sua conta agora mesmo!
         </Typography>
       </StyledTypography>
-      <StyledCard variant='elevation'>
-        <Typography variant='h3' sx={{ color: 'white', width: '30%', marginLeft: '35%', borderRadius: '15px', fontSize: 30, fontWeight: 'bold' }}>
+      <StyledCard variant='elevation' sx={{border: 1, borderColor: 'white'}}>
+        <Typography variant='h3' sx={{ color: 'white', width: '30%', marginTop: '10px', marginLeft: '35%', borderRadius: '15px', fontSize: 30, fontWeight: 'bold' }}>
           Login
         </Typography>
         <CardContent>
