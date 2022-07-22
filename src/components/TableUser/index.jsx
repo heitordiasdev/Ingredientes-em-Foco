@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, LinearProgress, Button } from '@mui/material';
+import ModeEditIcon from '@mui/icons-material/ModeEdit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditUser from '../Forms/editUser';
 
 export function TableUser({users, loading}){
+  const[dialogEdit, setDialogUserEdit] = useState(false);
+  const[user, setUser] = useState({});
+
+  const openDialogEdit = (id) => {
+    setUser(users.find((use)=> use.id === id));
+    setDialogUserEdit(true);
+    console.log(dialogEdit)
+  }
  return (
     <>
+    <EditUser setDialogUserEdit={setDialogUserEdit} user={user}/>
     <Paper className sx={{ borderRadius: '37px',  width:'100%'}}>
                 <Grid container spacing={3}>
                   <Grid item xs={12} sm={12}>
@@ -33,8 +45,9 @@ export function TableUser({users, loading}){
                             <TableCell align="center">{row.email}</TableCell>
                             <TableCell align="center">{row.cpfCnpj}</TableCell>
                             <TableCell align="center">{row.dateNasc}</TableCell>
-                            <TableCell align="right">
-                            </TableCell>
+                            <TableCell component="th"  align="center" scope="row">
+                              <Button onClick={()=>openDialogEdit(row.id)}> <ModeEditIcon /> </Button>
+                              <DeleteIcon /></TableCell>
                           </TableRow>
                       </TableBody>
                       </>
@@ -46,5 +59,6 @@ export function TableUser({users, loading}){
                 </Grid>
               </Paper>
     </>
+   
  );   
 }
