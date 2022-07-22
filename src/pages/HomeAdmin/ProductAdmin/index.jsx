@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Typography, Stack } from '@mui/material';
+import { Typography, Stack } from '@mui/material';
 import { CardFood } from '../../../components/CardFood';
 import { foodAll } from '../../../services/foodService';
 
