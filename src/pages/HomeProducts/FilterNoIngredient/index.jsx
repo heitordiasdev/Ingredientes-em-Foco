@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Box, Typography, Button } from '@mui/material';
+import { Box } from '@mui/material';
 import { CardFood } from '../../../components/CardFood';
 import FilterFood from '../../../components/FilterFood';
 import { filterNoIngredient } from '../../../services/foodService';
@@ -30,17 +30,6 @@ export default function FilterNoIngredient() {
           <CardFood food={food}/>
         </Box>
       </Box>
-       <Box sx={{margin:5}}>
-       <Typography sx={{ color: '#52691F', fontSize: '30px', textAlign: 'center', fontWeight: 'bolder'}}>
-           Deseja cadastrar algum produto?
-         </Typography>
-         <Typography sx={{ color: '#453F38', fontSize: '25px', textAlign: 'center', fontWeight: 'bolder', marginTop: '30px'}}>
-           Cadastre-se em nossa comunidade:
-           <Button href='/login' sx={{ width: '300px', height:'80px', margin: 5, fontSize:'20px', borderRadius:'37px', backgroundColor: '#E52928','&:hover': {backgroundColor: '#E52928',},}}>
-             Cadastrar
-           </Button>
-         </Typography>
-       </Box>
        </>
       );
 }
