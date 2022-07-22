@@ -1,23 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import { Typography, Stack } from '@mui/material';
-import { CardFood } from '../../../components/CardFood';
+import ListFoods from '../../../components/List/ListFoods';
 import { foodAll } from '../../../services/foodService';
 
 export default function ProductAdmin() {
     const [food, setFood] = useState([]);
+    const [ loading, setLoading ] = useState(true);
   
     useEffect(() =>{
       async function loadFood(){
         const response = await foodAll();
         setFood(response)
+        setLoading(false)
       }
       loadFood();
     },[]);
+
+    const refresh = async() => {
+      setLoading(true)
+      const getFoodsFromApi = await foodAll();
+      setFood(getFoodsFromApi);
+      setLoading(false)
+      console.log('Refresh', loading)
+    }
   
       return(
-        <Stack sx={{ display: 'flex', overflow: 'auto',mt:'50px', alignItems: 'center'}}>
-          <Typography sx={{ fontSize: 40,  color: '#E52928', textAlign:'center', fontWeight:'bolder'}} >CATÁLOGO DE PRODUTOS</Typography>
-          <CardFood food={food}/>
-        </Stack>
+        <>
+          <ListFoods foods={food} loading={loading} setLoading={refresh} />
+        </>
       );
   };

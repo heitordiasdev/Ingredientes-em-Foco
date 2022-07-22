@@ -9,7 +9,6 @@ import { Box, Dialog, Checkbox } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { updateFood }from '../../services/foodService';
 import InputLabel from '@mui/material/InputLabel';
-// import LoadFoods from '../../services/provider';
 
 
 function DialogEditProd({ open, setOpen, message, item }) {

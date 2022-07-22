@@ -8,7 +8,6 @@ import DialogContent from '@mui/material/DialogContent';
 import { Box, Checkbox, Dialog } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { newFood }from '../../services/foodService';
-// import LoadFoods from '../../services/provider';
 import InputLabel from '@mui/material/InputLabel';
 
 

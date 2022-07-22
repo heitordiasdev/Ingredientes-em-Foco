@@ -2,8 +2,7 @@ import React from "react";
 import DeleteIcon from '@mui/icons-material/Delete';
 import DialogContentText from '@mui/material/DialogContentText';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
-import { Box, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, List, LinearProgress, Typography, Button, Dialog } from '@mui/material';
-import MenuLateral from '../MenuLateral';
+import { Box, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, LinearProgress, Typography, Button } from '@mui/material';
 import FormNewProd from '../Forms/addFoods';
 import FormEditProd from '../Forms/editFoods';
 import ConfirmDialog from '../Forms/confirm';
@@ -37,10 +36,6 @@ const ListFoods = ({ foods, loading , setLoading}) => {
     setDeleteId('')
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   useEffect(() => {
     console.log('edited hook', editedItem)
   }, [editedItem])
@@ -66,7 +61,7 @@ const ListFoods = ({ foods, loading , setLoading}) => {
       <FormNewProd open={open} setOpen={setOpen} message={showMessage}/>
       <FormEditProd open={openEdit} setOpen={setOpenEdit} message={showMessage} item={editedItem}/>
       <ConfirmDialog open={openConfirm} setOpen={setOpenConfirm} confirm={deleteProd} ></ConfirmDialog>
-      <Box component="main" sx={{ flexGrow: 1, p: 3, backgroundColor:'#0000001C'}}>
+      <Box component="main" sx={{ flexGrow: 1, p: 3}}>
         <Typography sx={{ fontSize: 40,  color: '#E52928', textAlign:'center', fontWeight:'bolder'}} >LISTA DE PRODUTOS</Typography>
         <Paper className sx={{ borderRadius: '37px', mt:'50px'}}>
             <Grid container spacing={3} >

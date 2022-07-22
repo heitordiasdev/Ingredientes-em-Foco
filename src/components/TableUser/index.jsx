@@ -31,7 +31,7 @@ export function TableUser({users, loading}){
   const deleteProd = async () => {
     setOpenConfirm(false);
     console.log(deletePerson)
-    const resp = await deleteUser(deletePerson)
+    await deleteUser(deletePerson)
     setDeletePerson('')
   };
 

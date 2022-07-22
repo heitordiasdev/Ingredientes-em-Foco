@@ -13,7 +13,7 @@ export default function HomeAdmin() {
     return (
   <>
    <HeaderGlobal></HeaderGlobal>
-    <Box sx={{display: 'flex', overflow: 'auto', height: '74vh'}}>
+    <Box sx={{display: 'flex', overflow: 'auto', height: '74vh', backgroundColor:'#0000001C'}}>
         <Box sx={{width:'20%', alignSelf: 'center', p:5}}>
           <List>
             <MenuLateral icon={'person'} label={'USUARIOS'} to={'user-admin'}/>

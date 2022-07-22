@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { createUser } from "../../services/userService";
 import { TextField, Button, Dialog, DialogTitle, DialogContent, DialogActions } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 
 export default function AddUser(props) {
    const { open, setOpen} = props;
+   const navigate = useNavigate();
   const [newName, setName] = useState()
   const [newCpfCnpj, setCpfCnpj] = useState()
   const [newEmail, setEmail] = useState()
@@ -15,6 +17,7 @@ export default function AddUser(props) {
   const userSubmit = async () => {
     await createUser(newName, newCpfCnpj, newEmail, newPassword, newDateNasc);
     setOpen(false)
+    navigate('/home-admin/provider-admin')
   };
 
     const closeDialog = () =>{
