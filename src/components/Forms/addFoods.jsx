@@ -9,6 +9,9 @@ import { Box, Checkbox, Dialog } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { newFood }from '../../services/foodService';
 import InputLabel from '@mui/material/InputLabel';
+import { AuthContext } from '../../contexts/AuthContext';
+import { useContext } from 'react';
+
 
 
 function DialogNewProd(props) {
@@ -21,6 +24,7 @@ function DialogNewProd(props) {
   const [newManufacture, setManufacture] = useState('')
   const [newIngredients, setIngredients] = useState('')
   const [newIngredientsCheck, setIngredientsCheck] = useState([])
+  const auth = useContext(AuthContext)
 
 
   useEffect(() => {
@@ -72,7 +76,7 @@ function DialogNewProd(props) {
     console.log("ingredientes", ingredients)
     console.log("new", newIngredients)
     console.log("chec", newIngredientsCheck)
-    const product = { name:newName, image:newImage, manufacturer:newManufacture, ingredients:JSON.stringify(ingredients), infoNutritional:JSON.stringify(rows)}
+    const product = { name:newName, image:newImage, manufacturer:newManufacture, ingredients:JSON.stringify(ingredients), infoNutritional:JSON.stringify(rows), id:auth.user.id}
     const saveFoodResp = await newFood(product);
     console.log('Response',saveFoodResp)
     if(saveFoodResp.success){

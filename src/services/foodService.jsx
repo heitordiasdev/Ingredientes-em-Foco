@@ -48,6 +48,11 @@ export const filterFood = async (ingredient) => {
   return food;
 }
 
+export const filterFoodByUser = async (id) => {
+  const food = await api.get(`/foodFilterByUser/${id}`).then(response =>response.data).catch(err => err);
+  return food;
+}
+
 export const filterFoodIngredient = async (product,ingredient) => {
   const food = await api.get(`/foodFilterContainIngredient/${product}/${ingredient}`).then(response =>response.data).catch(err => err);
   return food;
