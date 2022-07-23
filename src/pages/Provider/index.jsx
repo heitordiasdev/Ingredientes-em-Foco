@@ -2,17 +2,18 @@ import { Box } from '@mui/material';
 import React from 'react';
 import { useEffect, useState } from 'react';
 import ListFoods from '../../components/List/ListFoods';
-// import LoadFoods from '../../services/provider';
-import { foodAll }from '../../services/foodService';
+import { filterFoodByUser }from '../../services/foodService';
+import { AuthContext } from '../../contexts/AuthContext';
+import { useContext } from 'react';
 
 function Provider() {
   const [foods, setFoods] = useState({});
   const [ loading, setLoading ] = useState(true);
-  // const { getFoods } = LoadFoods.List();
+  const auth = useContext(AuthContext)
   
   useEffect(() => {
     (async () => {
-      const getFoodsFromApi = await foodAll();
+      const getFoodsFromApi = await filterFoodByUser(auth.user.id);
       setFoods(getFoodsFromApi);
       setLoading(false)
     })();
@@ -20,7 +21,7 @@ function Provider() {
 
     const refresh = async() => {
       setLoading(true)
-      const getFoodsFromApi = await foodAll();
+      const getFoodsFromApi = await filterFoodByUser(auth.user.id);
       setFoods(getFoodsFromApi);
       setLoading(false)
       console.log('Refresh', loading)
