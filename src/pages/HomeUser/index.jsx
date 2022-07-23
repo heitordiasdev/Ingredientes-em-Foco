@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Box, Typography,  Button, Stack } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { CardFood } from '../../components/CardFood';
 import { foodAll } from '../../services/foodService';
 import { AuthContext } from '../../contexts/AuthContext';
@@ -33,25 +33,6 @@ export default function HomeUser() {
           Bem vindo(a) {auth.user.name}!
         </Typography>
           <CardFood food={food}/>
-        </Box>
-      </Box>
-      <Box sx={{ backgroundColor: '#F5F5F5', display: 'flex', height: '30vh', overflow: 'auto' }}>
-        <Box sx={{ margin: 'auto' }}>
-          <Typography sx={{ color: '#52691F', fontSize: '25pt', textAlign: 'center', fontWeight: 'bolder' }}>
-            Deseja cadastrar algum produto?
-          </Typography>
-          <Stack>
-            <Button sx={{
-              width: '110px',
-              margin: 'auto',
-              marginTop: '40px',
-              backgroundColor: '#388e3c',
-              '&:hover': {
-                backgroundColor: '#2e7d32',
-              },
-              
-            }}>Cadastrar</Button>
-          </Stack>
         </Box>
       </Box>
     </>

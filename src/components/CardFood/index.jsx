@@ -21,11 +21,11 @@ export function CardFood({food}){
         <Container maxWidth="xl">
             <ImageList cols={4} >
                 {food.map((item) => (
-                <Card key={item.id} sx={{ maxWidth: 280, marginTop: '30px', borderRadius: '15px' }}>
+                <Card key={item.id} sx={{ maxWidth: 500, marginTop: '30px', borderRadius: '15px' }}>
                     <CardMedia
                         component="img"
                         height="150"
-                        image="https://source.unsplash.com/random/?food"
+                        image={item.image}
                         alt="food"
                     />
                  <CardContent>

@@ -17,13 +17,14 @@ function DialogNewProd(props) {
   const [rows, setRows] = useState([{ name:'', quantity:'', vd:''}]);
   const [error, setError] = useState('')
   const [newName, setName] = useState('')
+  const [newImage, setImage] = useState('')
   const [newManufacture, setManufacture] = useState('')
   const [newIngredients, setIngredients] = useState('')
   const [newIngredientsCheck, setIngredientsCheck] = useState([])
 
 
   useEffect(() => {
-  }, [error, newName, newManufacture, newIngredients, newIngredientsCheck, rows ]);
+  }, [error, newName, newImage, newManufacture, newIngredients, newIngredientsCheck, rows ]);
 
   const addRow = (index) => {
     setRows([...rows, { name:'', quantity:'', vd:''}])
@@ -37,6 +38,10 @@ function DialogNewProd(props) {
 
   const changeName = (data) => {
       setName(data.target.value);
+  }
+
+  const changeImage = (data) => {
+    setImage(data.target.value);
   }
 
   const changeManufacture = (data) => {
@@ -67,7 +72,7 @@ function DialogNewProd(props) {
     console.log("ingredientes", ingredients)
     console.log("new", newIngredients)
     console.log("chec", newIngredientsCheck)
-    const product = { name:newName, manufacturer:newManufacture, ingredients:JSON.stringify(ingredients), infoNutritional:JSON.stringify(rows)}
+    const product = { name:newName, image:newImage, manufacturer:newManufacture, ingredients:JSON.stringify(ingredients), infoNutritional:JSON.stringify(rows)}
     const saveFoodResp = await newFood(product);
     console.log('Response',saveFoodResp)
     if(saveFoodResp.success){
@@ -81,6 +86,7 @@ function DialogNewProd(props) {
   const closeDialog = () =>{
     cleanError()
     setName('');
+    setImage('');
     setManufacture('');
     setIngredients('');
     setRows([
@@ -112,6 +118,17 @@ function DialogNewProd(props) {
           fullWidth
           variant="filled"
           onChange={event=>(changeName(event))}
+        />
+        <TextField
+          autoFocus
+          margin="dense"
+          id="name"
+          label="Url image"
+          type="text"
+          value={newImage}
+          fullWidth
+          variant="filled"
+          onChange={event=>(changeImage(event))}
         />
         <TextField
           autoFocus

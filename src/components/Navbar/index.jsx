@@ -35,8 +35,8 @@ export default function Navbar(){
     }
 
     const logout = async () => {
-        window.location.reload();
         navigate('/');
+        window.location.reload();
     };
 
     const handleClick = () => {

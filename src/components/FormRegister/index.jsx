@@ -47,7 +47,7 @@ export default function FormRegister() {
                 <TextField sx={{ backgroundColor: 'white' }} label='Nascimento' required placeholder='Digite seu ano de Nascimento' variant='outlined' fullWidth onChange={(event) => setDateNasc(event.target.value)} />
               </Grid>
               <Grid xs={12} sm={6} item>
-                <TextField sx={{ backgroundColor: 'white' }} label='CPF' required placeholder='Digite seu CPF' variant='outlined' fullWidth onChange={(event) => setCpfCnpj(event.target.value)} />
+                <TextField sx={{ backgroundColor: 'white' }} label='CPF/CNPJ' required placeholder='Digite seu CPF ou CNPJ' variant='outlined' fullWidth onChange={(event) => setCpfCnpj(event.target.value)} />
               </Grid>
               <Grid xs={12} sm={6} item>
                 <TextField sx={{ backgroundColor: 'white' }} type='password' label='Senha' required placeholder='Digite sua Senha' variant='outlined' fullWidth 

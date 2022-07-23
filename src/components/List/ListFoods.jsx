@@ -20,7 +20,7 @@ const ListFoods = ({ foods, loading , setLoading}) => {
   
   const editProdOpen = (item) => {
     const info = item.infoNutritional.length>0?JSON.parse(item.infoNutritional):[]
-    setEditedItem({id:item.id, name:item.name, manufacturer:item.manufacturer, ingredients:JSON.parse(item.ingredients)['data'], infoNutritional:info , check:JSON.parse(item.ingredients)['check']})
+    setEditedItem({id:item.id, name:item.name, image:item.image, manufacturer:item.manufacturer, ingredients:JSON.parse(item.ingredients)['data'], infoNutritional:info , check:JSON.parse(item.ingredients)['check']})
     setOpenEdit(true);
   };
 
@@ -79,6 +79,7 @@ const ListFoods = ({ foods, loading , setLoading}) => {
                     <TableRow sx={{backgroundColor:'#E4E4E4'}}>
                       <TableCell align="center">ID</TableCell>
                       <TableCell align="center">NOME</TableCell>
+                      <TableCell align="center">IMAGE</TableCell>
                       <TableCell align="center">INGREDIENTES</TableCell>
                       <TableCell align="center">AÇÕES</TableCell>
                     </TableRow>
@@ -89,6 +90,7 @@ const ListFoods = ({ foods, loading , setLoading}) => {
                         <TableRow key={row.id}>
                           <TableCell align="center">{row.id}</TableCell>
                           <TableCell component="th"  align="center" scope="row">{row.name}</TableCell>
+                          <TableCell component="th"  align="center" scope="row">{row.image}</TableCell>
                           <TableCell component="th"  align="center" scope="row">{JSON.parse(row.ingredients)['data']}, {JSON.parse(row.ingredients)['check']}</TableCell>
                           <TableCell component="th"  align="center" scope="row"><ModeEditIcon onClick={()=>editProdOpen(row)}></ModeEditIcon> <DeleteIcon onClick={()=>askDeleteProd(row.id)} /></TableCell>
                         </TableRow>
