@@ -15,6 +15,7 @@ function DialogEditProd({ open, setOpen, message, item }) {
 
   const [error, setError] = useState('')
   const [newName, setName] = useState('')
+  const [newImage, setImage] = useState('')
   const [newManufacture, setManufacture] = useState('')
   const [newIngredients, setIngredients] = useState('')
   const [newIngredientsCheck, setIngredientsCheck] = useState([])
@@ -23,6 +24,7 @@ function DialogEditProd({ open, setOpen, message, item }) {
   useEffect(() => {
     if(item != null){
       setName(item.name)
+      setImage(item.image)
       setManufacture(item.manufacturer)
       setIngredients(item.ingredients)
       setIngredientsCheck([])
@@ -42,6 +44,10 @@ function DialogEditProd({ open, setOpen, message, item }) {
 
   const changeName = (data) => {
       setName(data.target.value);
+  }
+
+  const changeImage = (data) => {
+    setImage(data.target.value);
   }
 
   const changeManufacture = (data) => {
@@ -70,7 +76,7 @@ function DialogEditProd({ open, setOpen, message, item }) {
 
   const updateProduct = async ()=> {
     let ingredients = { data:newIngredients, check:newIngredientsCheck} 
-    const product = { name:newName, manufacturer:newManufacture, ingredients:JSON.stringify(ingredients), infoNutritional:JSON.stringify(erows)}
+    const product = { name:newName, image: newImage, manufacturer:newManufacture, ingredients:JSON.stringify(ingredients), infoNutritional:JSON.stringify(erows)}
     const saveFoodResp = await updateFood(product, item.id);
     console.log('Response',saveFoodResp)
     if(saveFoodResp.success){
@@ -114,6 +120,17 @@ function DialogEditProd({ open, setOpen, message, item }) {
           fullWidth
           variant="filled"
           onChange={event=>(changeName(event))}
+        />
+        <TextField
+          autoFocus
+          margin="dense"
+          id="name"
+          label="Url image"
+          type="text"
+          value={newImage}
+          fullWidth
+          variant="filled"
+          onChange={event=>(changeImage(event))}
         />
         <TextField
           autoFocus
