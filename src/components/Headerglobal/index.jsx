@@ -31,13 +31,13 @@ export default function HeaderGlobal () {
         {
         auth.user.id ?( 
         <List style={{display: 'flex', listStyle: 'none', backgroundColor: '#52691F', color: 'white', height: '7vh', justifyContent: 'flex-end'}}>
-            <ListItem style={{width: 'auto', marginRight: 40, cursor: 'pointer'}} onClick={ClickImage}>ÍNICIO</ListItem>
+            <ListItem style={{width: 'auto', marginRight: 40, cursor: 'pointer'}} onClick={ClickImage}>INÍCIO</ListItem>
             <ListItem style={{width: 'auto', marginRight: 40, cursor: 'pointer'}} onClick={Click}>PRODUTOS</ListItem>
-            <ListItem style={{width: 'auto', marginRight: 40, cursor: 'pointer'}} onClick={handleLogin}>MINHA AREA</ListItem>
+            <ListItem style={{width: 'auto', marginRight: 40, cursor: 'pointer'}} onClick={handleLogin}>MINHA ÁREA</ListItem>
         </List>
         ):( 
         <List style={{display: 'flex', listStyle: 'none', backgroundColor: '#52691F', color: 'white', height: '7vh', justifyContent: 'flex-end'}}>
-            <ListItem style={{width: 'auto', marginRight: 40, cursor: 'pointer'}} onClick={ClickImage}>ÍNICIO</ListItem>
+            <ListItem style={{width: 'auto', marginRight: 40, cursor: 'pointer'}} onClick={ClickImage}>INÍCIO</ListItem>
             <ListItem style={{width: 'auto', marginRight: 40, cursor: 'pointer'}} onClick={Click}>PRODUTOS</ListItem>
         </List>
         )

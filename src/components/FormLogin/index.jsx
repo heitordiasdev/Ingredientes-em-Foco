@@ -64,7 +64,7 @@ export default function FormLogin() {
               </Grid>
               <Grid xs={12}>
               <Typography variant='h8' sx={{margin: 'auto',marginRight: '1%',color: 'white'}}>
-                  Não possuí cadastro?
+                  Não possui cadastro?
               </Typography>
               <Link onClick={ClickRegister} underline="hover" sx={{cursor: 'pointer', color: '#228B22', fontWeight: 'bold'}}>
                 Crie uma conta

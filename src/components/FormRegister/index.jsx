@@ -23,16 +23,16 @@ export default function FormRegister() {
   return (
 
     <StyledBox>
-      <Typography variant="h2" component="h2" sx={{ float: 'left', marginTop: '15%', marginLeft: '16%', color: 'white', fontWeight: 'bold', }}>
+      <Typography variant="h3" component="h3" sx={{ float: 'left', marginTop: '15%', marginLeft: '16%', color: 'white', fontWeight: 'bold', }}>
         Bem-vindo(a) <br />
         à Nossa Comunidade
         <Typography variant='h5' sx={{ marginTop: '3%' }}>
           Crie sua conta agora mesmo!
         </Typography>
       </Typography>
-      <StyledCard  variant='elevation' sx={{border: 1, borderColor: 'white'}}>
+      <StyledCard  variant='elevation' sx={{border: 1, borderColor: 'white', marginTop: '7vh'}}>
         <Typography variant='h3' sx={{ color: 'white', width: '30%', marginTop: '10px', marginLeft: '35%', borderRadius: '15px', fontSize: 30, fontWeight: 'bold' }}>
-          Cadastre-se
+          Cadastro
         </Typography>
         <CardContent>
           <form onSubmit={() => setAlert(true)}>
